@@ -114,7 +114,7 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
     const user = await db.user.create({
       firstName, lastName, username, email, hashed_password
     })
-    res.redirect('/login')
+    res.redirect('/users/login')
   }
 })
 
