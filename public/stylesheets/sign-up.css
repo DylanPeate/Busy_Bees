@@ -19,6 +19,13 @@
     padding-left: 15px;
 }
 
+#sign-up-form {
+    width: 400px;
+    height: 700px;
+    display: block;
+    justify-items: center;
+}
+
 .btn {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
