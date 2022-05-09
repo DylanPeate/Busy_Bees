@@ -2,7 +2,7 @@ include utils.pug
 
 button(type="button") Login
 
-form(method="post" action="/sign-up")
+form(method="post" action="/users/sign-up")
     input(type="hidden" name="_csrf" value=csrfToken)
     input(type="text" id="firstName" name="firstName" value="First Name")
     input(type="text" id="lastName" name="lastName" value="Last Name")
