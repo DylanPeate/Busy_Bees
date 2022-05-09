@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+//signup route
+// router.get('/signup', (req,res,next) => {
+//   res.render('signup', )
+// })
+
 module.exports = router;
