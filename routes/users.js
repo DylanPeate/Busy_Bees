@@ -1,7 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require("express-validator")
+<<<<<<< HEAD
 const cookieParser = require('cookie-parser')
+=======
+const cookieParser = require('cookie-parser');
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
+const { asyncHandler, handleValidationErrors } = require("../utils");
+
+>>>>>>> fc4f780d3890e507690bc378fd9cb9d20f1c29da
 
 
 /* GET users listing. */
@@ -9,7 +17,10 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc4f780d3890e507690bc378fd9cb9d20f1c29da
 const loginValidators = [
   check('emailAddress')
     .exists({ checkFalsy: true })
@@ -62,4 +73,12 @@ router.post('/user/logout', (req,res)=>{
 })
 
 
+<<<<<<< HEAD
+=======
+//signup route
+router.get('/sign-up', csrfProtection, (req, res) => {
+  res.render('sign-up', { csrfToken: req.csrfToken(), errors: [], user: {} })
+})
+
+>>>>>>> fc4f780d3890e507690bc378fd9cb9d20f1c29da
 module.exports = router;
