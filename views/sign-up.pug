@@ -1,5 +1,7 @@
 include utils.pug
 
+button(type="button") Login
+
 form(method="post" action="/sign-up")
     input(type="hidden" name="_csrf" value=csrfToken)
     input(type="text" id="firstName" name="firstName" value="First Name")
