@@ -1,12 +1,19 @@
 include utils.pug
 
-button(type="button") Login
+doctype html
+html
+  head
+      block head
+        title="Busy Bees - Sign Up"
+        link(rel='stylesheet' href='/stylesheets/reset.css')
+  body
+    button(type="button") Login
 
-form(method="post" action="/users/sign-up")
-    input(type="hidden" name="_csrf" value=csrfToken)
-    input(type="text" id="firstName" name="firstName" value="First Name")
-    input(type="text" id="lastName" name="lastName" value="Last Name")
-    input(type="email" id="email" name="email" value="Email")
-    input(type="text" id="username" name="username" value="Username")
-    input(type="password" id="password" name="password" value="Password")
-    button(type="submit") Sign up!
+    form(method="post" action="/users/sign-up")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input(type="text" id="firstName" name="firstName" value="First Name")
+        input(type="text" id="lastName" name="lastName" value="Last Name")
+        input(type="email" id="email" name="email" value="Email")
+        input(type="text" id="username" name="username" value="Username")
+        input(type="password" id="password" name="password" value="Password")
+        button(type="submit") Sign up!
