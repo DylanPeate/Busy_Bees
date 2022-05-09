@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const db = require('./db/models')
 
+
 const app = express();
 
 // view engine setup
