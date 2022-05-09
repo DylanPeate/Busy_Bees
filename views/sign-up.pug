@@ -1,3 +1,12 @@
+include utils.pug
+
+button(type="button") Login
+
 form(method="post" action="/sign-up")
-    label(for="firstName")
-    input(type="text" id="firstName" value="firstName")
+    input(type="hidden" name="_csrf" value=csrfToken)
+    input(type="text" id="firstName" name="firstName" value="First Name")
+    input(type="text" id="lastName" name="lastName" value="Last Name")
+    input(type="email" id="email" name="email" value="Email")
+    input(type="text" id="username" name="username" value="Username")
+    input(type="password" id="password" name="password" value="Password")
+    button(type="submit") Sign up!
