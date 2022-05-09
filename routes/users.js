@@ -22,11 +22,11 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.get('/user/login', csrfProtection, (req,res)=>{
+router.get('/login', csrfProtection, (req,res)=>{
   res.render('user-login', {title: "Log-in", csrfToken: req.csrfToken()})
 })
 
-router.post('/user/login', csrfProtection, loginValidators,
+router.post('/login', csrfProtection, loginValidators,
   asyncHandler(async (req, res) => {
     const {
       emailAddress,
@@ -59,7 +59,7 @@ router.post('/user/login', csrfProtection, loginValidators,
     });
   }));
 
-router.post('/user/logout', (req,res)=>{
+router.post('/logout', (req,res)=>{
     logoutUser(req,res)
     res.redirect('/user/login')
 })
