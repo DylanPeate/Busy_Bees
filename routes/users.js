@@ -111,7 +111,7 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
     const hashed_password = await bcrypt.hash(password,12)
     console.log(username, '<----username')
     const user = await db.user.create({
-      username, email, hashed_password
+      firstName, lastName, username, email, hashed_password
     })
     res.redirect('/login')
   }
