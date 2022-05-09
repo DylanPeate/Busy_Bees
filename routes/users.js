@@ -6,6 +6,8 @@ const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const bcrypt = require('bcryptjs')
+const db = require('../db/models');
+
 
 
 
@@ -96,6 +98,7 @@ const signUpValidator = (req,res,next) => {
 }
 
 router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
+  // console.log(req.body)
   const { firstName, lastName, email, username, password, confirmPassword } = req.body;
   if (req.errors.length > 0) {
     res.render('sign-up', {
@@ -105,13 +108,12 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
     })
   }else{
     console.log('I reached here')
-    const hashedPW = await bcrypt.hash(password,12)
-    const newUser = await user.create({
-      username,
-      email,
-      hashedPW
+    const hashed_password = await bcrypt.hash(password,12)
+    console.log(username, '<----username')
+    const user = await db.user.create({
+      username, email, hashed_password
     })
-    res.redirect('/users/login')
+    res.redirect('/login')
   }
 })
 
