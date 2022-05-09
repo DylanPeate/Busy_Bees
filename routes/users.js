@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 const { asyncHandler, handleValidationErrors } = require("../utils");
+const bcrypt = require('bcryptjs')
+const db = require('../db/models');
+
 
 
 
@@ -22,11 +25,11 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.get('/user/login', csrfProtection, (req,res)=>{
+router.get('/login', csrfProtection, (req,res)=>{
   res.render('user-login', {title: "Log-in", csrfToken: req.csrfToken()})
 })
 
-router.post('/user/login', csrfProtection, loginValidators,
+router.post('/login', csrfProtection, loginValidators,
   asyncHandler(async (req, res) => {
     const {
       emailAddress,
@@ -59,7 +62,7 @@ router.post('/user/login', csrfProtection, loginValidators,
     });
   }));
 
-router.post('/user/logout', (req,res)=>{
+router.post('/logout', (req,res)=>{
     logoutUser(req,res)
     res.redirect('/user/login')
 })
@@ -68,6 +71,50 @@ router.post('/user/logout', (req,res)=>{
 //signup route
 router.get('/sign-up', csrfProtection, (req, res) => {
   res.render('sign-up', { csrfToken: req.csrfToken(), errors: [], user: {} })
+})
+
+const signUpValidator = (req,res,next) => {
+  const { firstName, lastName, email, username, password, confirmPassword } = req.body;
+  const emailRegex = /^[^\s@]+@\w+\.[A-z]{2,3}$/;
+  req.errors = [];
+
+  if (firstName.length < 2){
+    req.errors.push('Name is to short')
+  }
+  if (lastName.length < 2){
+    req.errors.push('Name is to short')
+  }
+  if (!emailRegex.test(email)){
+    req.errors.push('Invalid email')
+  }
+  if (username.length < 5){
+    req.errors.push('Username is to short')
+  }
+  if(!(password === confirmPassword)){
+    req.errors.push('Passwords do not match')
+  }
+
+  next()
+}
+
+router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
+  // console.log(req.body)
+  const { firstName, lastName, email, username, password, confirmPassword } = req.body;
+  if (req.errors.length > 0) {
+    res.render('sign-up', {
+        csrfToken: req.csrfToken(),
+        errors: req.errors,
+        user: req.body
+    })
+  }else{
+    console.log('I reached here')
+    const hashed_password = await bcrypt.hash(password,12)
+    console.log(username, '<----username')
+    const user = await db.user.create({
+      firstName, lastName, username, email, hashed_password
+    })
+    res.redirect('/login')
+  }
 })
 
 module.exports = router;
