@@ -7,6 +7,7 @@ const csrfProtection = csrf({ cookie: true });
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const bcrypt = require('bcryptjs')
 const db = require('../db/models');
+const {  loginUser,  logoutUser} = require('../auth')
 
 
 
@@ -41,11 +42,11 @@ router.post('/login', csrfProtection, loginValidators,
 
     if (validatorErrors.isEmpty()) {
       // TODO Attempt to login the user.
-      const user= await User.findOne({where:{email}})
-      if(user !== null){
-          const passwordMatch = await bcrypt.compare(password, user.hashed_Password.toString())
+      const User= await db.user.findOne({where:{email}})
+      if(User !== null){
+          const passwordMatch = await bcrypt.compare(password, User.hashed_Password.toString())
           if(passwordMatch){
-              loginUser(req,res,user)
+              loginUser(req,res,User)
               return res.redirect('/')
           }
       }
