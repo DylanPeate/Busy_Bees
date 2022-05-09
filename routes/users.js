@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { check, validationResult } = require("express-validator")v
+const { check, validationResult } = require("express-validator")
 const cookieParser = require('cookie-parser')
 
 /* GET users listing. */
