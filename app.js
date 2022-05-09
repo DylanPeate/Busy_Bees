@@ -8,7 +8,11 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+<<<<<<< HEAD
 const db = require('./db/models');
+=======
+const db = require('./db/models')
+>>>>>>> origin/main
 
 const app = express();
 
