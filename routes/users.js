@@ -74,7 +74,8 @@ router.get('/sign-up', csrfProtection, (req, res) => {
   res.render('sign-up', { csrfToken: req.csrfToken(), errors: [], user: {} })
 })
 
-const signUpValidator = (req,res,next) => {
+
+const signUpValidator = async (req,res,next) => {
   const { firstName, lastName, email, username, password, confirmPassword } = req.body;
   const emailRegex = /^[^\s@]+@\w+\.[A-z]{2,3}$/;
   req.errors = [];
@@ -88,8 +89,18 @@ const signUpValidator = (req,res,next) => {
   if (!emailRegex.test(email)){
     req.errors.push('Invalid email')
   }
+  if(await db.user.findOne({
+    where: {email: email}
+  })){
+    req.errors.push('Email already registered to an account')
+  }
   if (username.length < 5){
     req.errors.push('Username is to short')
+  }
+  if(await db.user.findOne({
+    where: {username: username}
+  })){
+    req.errors.push('Username already taken')
   }
   if(!(password === confirmPassword)){
     req.errors.push('Passwords do not match')
@@ -99,7 +110,6 @@ const signUpValidator = (req,res,next) => {
 }
 
 router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
-  // console.log(req.body)
   const { firstName, lastName, email, username, password, confirmPassword } = req.body;
   if (req.errors.length > 0) {
     res.render('sign-up', {
@@ -108,9 +118,7 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
         user: req.body
     })
   }else{
-    console.log('I reached here')
     const hashed_password = await bcrypt.hash(password,12)
-    console.log(username, '<----username')
     const user = await db.user.create({
       firstName, lastName, username, email, hashed_password
     })
