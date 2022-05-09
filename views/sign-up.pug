@@ -3,15 +3,16 @@ html
   head
       block head
         title="Busy Bees - Sign Up"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/sign-up.css')
   body
-    button(type="button") Login
+    button(type="button" id="login-button" class="btn") Log in
 
     form(method="post" action="/users/sign-up")
         input(type="hidden" name="_csrf" value=csrfToken)
-        input(type="text" id="firstName" name="firstName" placeholder="First Name", required)
-        input(type="text" id="lastName" name="lastName" placeholder="Last Name", required)
-        input(type="email" id="email" name="email" placeholder="Email", required)
-        input(type="text" id="username" name="username" placeholder="Username", required)
-        input(type="password" id="password" name="password" placeholder="Password", required)
-        button(type="submit") Sign up!
+        input(type="text" id="firstName" class="inputBox" name="firstName" placeholder="First Name", required)
+        input(type="text" id="lastName" class="inputBox" name="lastName" placeholder="Last Name", required)
+        input(type="email" id="email" class="inputBox" name="email" placeholder="Email", required)
+        input(type="text" id="username" class="inputBox" name="username" placeholder="Username", required)
+        input(type="password" id="password" class="inputBox" name="password" placeholder="Password", required)
+        input(type="password" id="confirmPassword" class="inputBox" name="confirmPassword" placeholder="Confirm Password", required)
+        button(type="submit" id="signup-button" class="btn") Sign up!
