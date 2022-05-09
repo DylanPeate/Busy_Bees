@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     hashed_password: DataTypes.STRING
   }, {});
   user.associate = function(models) {
-    // associations can be defined here
+    //many to one id to list.user_id
+    user.hasMany(models.list, {foreignKey: 'user_id'})
   };
   return user;
 };
