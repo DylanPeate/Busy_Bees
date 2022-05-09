@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 const loginValidators = [
-  check('emailAddress')
+  check('email')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Email Address'),
   check('password')
@@ -32,7 +32,7 @@ router.get('/login', csrfProtection, (req,res)=>{
 router.post('/login', csrfProtection, loginValidators,
   asyncHandler(async (req, res) => {
     const {
-      emailAddress,
+      email,
       password,
     } = req.body;
 
@@ -41,9 +41,9 @@ router.post('/login', csrfProtection, loginValidators,
 
     if (validatorErrors.isEmpty()) {
       // TODO Attempt to login the user.
-      const user= await User.findOne({where:{emailAddress}})
+      const user= await User.findOne({where:{email}})
       if(user !== null){
-          const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString())
+          const passwordMatch = await bcrypt.compare(password, user.hashed_Password.toString())
           if(passwordMatch){
               loginUser(req,res,user)
               return res.redirect('/')
@@ -56,7 +56,7 @@ router.post('/login', csrfProtection, loginValidators,
 
     res.render('user-login', {
       title: 'Login',
-      emailAddress,
+      email,
       errors,
       csrfToken: req.csrfToken(),
     });
