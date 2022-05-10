@@ -7,14 +7,14 @@ const csrfProtection = csrf({ cookie: true });
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const bcrypt = require('bcryptjs');
 const db = require('../db/models');
-const { loginUser, logoutUser } = require('../auth');
+const { loginUser, logoutUser, requireAuth } = require('../auth');
 
 //list routes
-router.get('/new-list', csrfProtection, (req, res) => {
+router.get('/new-list', csrfProtection, requireAuth, (req, res) => {
     res.render('new-list', { title: 'New-list', csrfToken: req.csrfToken() })
 })
 
-router.post('/new-list', csrfProtection, asyncHandler(async (req, res) => {
+router.post('/new-list', csrfProtection, asyncHandler, requireAuth, (async (req, res) => {
     const user_id = req.session.auth.userId;
     const { name } = req.body;
     if (name.length < 1) {
