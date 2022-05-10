@@ -9,10 +9,12 @@ html
   body
     div(id="left-panel")
     div(id="right-panel")
-      button(type="button" id="login-button" class="btn") Log in
-      label(id="form-text") Sign up for free.
+      div(id="login-div")
+        p(id="already-text" class="right-text") Already have an account?
+        button(type="button" id="login-button" class="btn") Log in
       +validationErrorSummary(errors)
-      form(id="sign-up-form" method="post" action="/users/login")
+      form(id="sign-up-form" method="post" action="/users/sign-up")
+        label(id="form-text" class="right-text") Sign up for free.
         input(type="hidden" name="_csrf" value=csrfToken)
         input(type="text" id="firstName" class="inputBox" name="firstName" placeholder="First Name", required)
         input(type="text" id="lastName" class="inputBox" name="lastName" placeholder="Last Name", required)
