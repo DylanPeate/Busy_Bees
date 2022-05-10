@@ -7,13 +7,13 @@ const csrfProtection = csrf({ cookie: true });
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const bcrypt = require('bcryptjs')
 const db = require('../db/models');
-const {  loginUser,  logoutUser} = require('../auth')
+const { loginUser, logoutUser } = require('../auth')
 
 
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
@@ -26,8 +26,8 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.get('/login', csrfProtection, (req,res)=>{
-  res.render('user-login', {title: "Log-in", csrfToken: req.csrfToken()})
+router.get('/login', csrfProtection, (req, res) => {
+  res.render('user-login', { title: "Log-in", csrfToken: req.csrfToken() })
 })
 
 router.post('/login', csrfProtection, loginValidators,
@@ -42,13 +42,13 @@ router.post('/login', csrfProtection, loginValidators,
 
     if (validatorErrors.isEmpty()) {
       // TODO Attempt to login the user.
-      const User= await db.user.findOne({where:{email}})
-      if(User !== null){
-          const passwordMatch = await bcrypt.compare(password, User.hashed_Password.toString())
-          if(passwordMatch){
-              loginUser(req,res,User)
-              return res.redirect('/')
-          }
+      const User = await db.user.findOne({ where: { email } })
+      if (User !== null) {
+        const passwordMatch = await bcrypt.compare(password, User.hashed_password.toString())
+        if (passwordMatch) {
+          loginUser(req, res, User)
+          return res.redirect('/home')
+        }
       }
       errors.push('Login failed for the provided email address and password')
     } else {
@@ -63,9 +63,9 @@ router.post('/login', csrfProtection, loginValidators,
     });
   }));
 
-router.post('/logout', (req,res)=>{
-    logoutUser(req,res)
-    res.redirect('/user/login')
+router.post('/logout', (req, res) => {
+  logoutUser(req, res)
+  res.redirect('/user/login')
 })
 
 
@@ -75,34 +75,34 @@ router.get('/sign-up', csrfProtection, (req, res) => {
 })
 
 
-const signUpValidator = async (req,res,next) => {
+const signUpValidator = async (req, res, next) => {
   const { firstName, lastName, email, username, password, confirmPassword } = req.body;
   const emailRegex = /^[^\s@]+@\w+\.[A-z]{2,3}$/;
   req.errors = [];
 
-  if (firstName.length < 2){
+  if (firstName.length < 2) {
     req.errors.push('Name is to short')
   }
-  if (lastName.length < 2){
+  if (lastName.length < 2) {
     req.errors.push('Name is to short')
   }
-  if (!emailRegex.test(email)){
+  if (!emailRegex.test(email)) {
     req.errors.push('Invalid email')
   }
-  if(await db.user.findOne({
-    where: {email: email}
-  })){
+  if (await db.user.findOne({
+    where: { email: email }
+  })) {
     req.errors.push('Email already registered to an account')
   }
-  if (username.length < 5){
+  if (username.length < 5) {
     req.errors.push('Username is to short')
   }
-  if(await db.user.findOne({
-    where: {username: username}
-  })){
+  if (await db.user.findOne({
+    where: { username: username }
+  })) {
     req.errors.push('Username already taken')
   }
-  if(!(password === confirmPassword)){
+  if (!(password === confirmPassword)) {
     req.errors.push('Passwords do not match')
   }
 
@@ -113,13 +113,15 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
   const { firstName, lastName, email, username, password, confirmPassword } = req.body;
   if (req.errors.length > 0) {
     res.render('sign-up', {
-        csrfToken: req.csrfToken(),
-        errors: req.errors,
-        user: req.body
+      csrfToken: req.csrfToken(),
+      errors: req.errors,
+      user: req.body
     })
-  }else{
-    const hashed_password = await bcrypt.hash(password,12)
-    const user = await db.user.create({
+    console.log(req.errors)
+  } else {
+    const hashed_password = await bcrypt.hash(password, 12)
+    console.log(hashed_password)
+    await db.user.create({
       firstName, lastName, username, email, hashed_password
     })
     res.redirect('/users/login')

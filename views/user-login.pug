@@ -1,7 +1,19 @@
+include utils.pug
+
 doctype html
 html
   head
-      block head
-        title="Busy Bees - Log In"
-        link(rel='stylesheet' href='/stylesheets/log-in.css')
+    block head
+      title="Busy Bees - Log In"
+      link(rel='stylesheet' href='/stylesheets/log-in.css')
   body
+    div(id="left-panel-log")
+    div(id="right-panel-log")
+      button(type="submit" id="sign-up-button" class="btn-log") Sign up for free
+      label(for="login-form" id="form-text-log") Been here before? Welcome back!
+      +validationErrorSummary(errors)
+      form(id="login-form" method="post" action="/")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input(type="text" id="email" class="inputBox-log" name="email" placeholder="Email", required)
+        input(type="password" id="password" class="inputBox-log" name="password" placeholder="Password", required)
+        button(type="submit" id="login-button-log" class="btn-log") Log in
