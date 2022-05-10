@@ -44,7 +44,7 @@ router.post('/login', csrfProtection, loginValidators,
       // TODO Attempt to login the user.
       const User= await db.user.findOne({where:{email}})
       if(User !== null){
-          const passwordMatch = await bcrypt.compare(password, User.hashed_Password.toString())
+          const passwordMatch = await bcrypt.compare(password, User.hashed_password.toString())
           if(passwordMatch){
               loginUser(req,res,User)
               return res.redirect('/')
@@ -117,9 +117,11 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
         errors: req.errors,
         user: req.body
     })
+    console.log(req.errors)
   }else{
     const hashed_password = await bcrypt.hash(password,12)
-    const user = await db.user.create({
+    console.log(hashed_password)
+    await db.user.create({
       firstName, lastName, username, email, hashed_password
     })
     res.redirect('/users/login')
