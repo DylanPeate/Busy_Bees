@@ -11,7 +11,7 @@ html
     div(id="right-panel")
       div(id="login-div")
         p(id="already-text" class="right-text") Already have an account?
-        button(type="button" id="login-button" class="btn") Log in
+        button(type="button" id="login-button" class="btn" href="/users/login") Log in
       +validationErrorSummary(errors)
       form(id="sign-up-form" method="post" action="/users/sign-up")
         label(id="form-text" class="right-text") Sign up for free.
