@@ -1,3 +1,20 @@
-extends layout
 include utils.pug
-block content
+
+doctype html
+html
+  head
+    block head
+      title="Busy Bees - Home"
+      link(rel='stylesheet' href='/stylesheets/home.css')
+  body
+    header
+        div(id="top-nav")
+        div(id="body")
+            div(id="left-nav-bar") Left Navbar
+                div(id="tasks-title" class="text nav-text") Tasks
+                div(class="divider")
+                div(id="lists-title" class="text nav-text") Lists
+                div(class="divider")
+            div(id="task-lists-body") Tasks go here
+            div(id="list-summary")
+                h3(id="list-summary-title" class="list-summary-text text") List Summary
