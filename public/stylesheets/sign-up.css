@@ -45,7 +45,7 @@
 }
 
 .alert {
-  position: relative;
+  position: absolute;
   top: 90px;
   right: -175px;
 }
