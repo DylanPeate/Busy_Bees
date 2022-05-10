@@ -14,10 +14,9 @@ html
             div(id="left-nav-bar") Left Navbar
                 div(id="tasks-title" class="text nav-text") Tasks
                 div(class="divider")
-                label(id="lists-title" class="text nav-text" for="lists") Lists
-                    ul(id="list-of-lists")
-                        each list in lists
-                            li= list.name
+                div(id="lists-title" class="text nav-text") Lists
+                    each list in lists
+                        a(type="button" id=`list-#{list.id}` href=`/home/list/${list.id}`)= list.name
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
