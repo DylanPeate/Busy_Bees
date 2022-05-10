@@ -34,5 +34,12 @@ router.post('/new-list', csrfProtection, asyncHandler, requireAuth, (async (req,
     }
 }))
 
+//tasks
+router.post('/new-task', csrfProtection, asyncHandler, requireAuth, (async (req, res) => {
+    const user_id = req.session.auth.userId;
+
+}))
+
+
 
 module.exports = router;
