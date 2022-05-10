@@ -11,7 +11,7 @@ html
     div(id="right-panel-log")
       button(type="submit" id="sign-up-button" class="btn-log") Sign up for free
       label(for="login-form" id="form-text-log") Been here before? Welcome back!
-      +validationErrorSummary
+      +validationErrorSummary(errors)
       form(id="login-form" method="post" action="/")
         input(type="hidden" name="_csrf" value=csrfToken)
         input(type="text" id="email" class="inputBox-log" name="email" placeholder="Email", required)

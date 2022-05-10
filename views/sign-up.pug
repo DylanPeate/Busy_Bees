@@ -11,7 +11,7 @@ html
     div(id="right-panel")
       button(type="button" id="login-button" class="btn") Log in
       label(id="form-text") Sign up for free.
-      +validationErrorSummary
+      +validationErrorSummary(errors)
       form(id="sign-up-form" method="post" action="/users/login")
         input(type="hidden" name="_csrf" value=csrfToken)
         input(type="text" id="firstName" class="inputBox" name="firstName" placeholder="First Name", required)
