@@ -12,18 +12,15 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: false
       },
-      date_created: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
       completed: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false
       },
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: 'users'}
+        references: { model: 'users' }
       },
       createdAt: {
         allowNull: false,

@@ -9,8 +9,11 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
-router.get('/', requireAuth, (req, res) => {
-    res.render('home')
+router.get('/', requireAuth, async (req, res) => {
+    const lists = await db.list.findAll({
+        where: { user_id: req.session.auth.userId }
+    })
+    res.render('home', { lists })
 })
 
 
