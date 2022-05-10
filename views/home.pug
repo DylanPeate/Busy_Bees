@@ -15,9 +15,9 @@ html
                 div(id="tasks-title" class="text nav-text") Tasks
                 div(class="divider")
                 label(id="lists-title" class="text nav-text" for="lists") Lists
-                    select(id="list-select" name="lists")
+                    ul(id="list-of-lists")
                         each list in lists
-                            option(value= list.id)=list.name
+                            li= list.name
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
