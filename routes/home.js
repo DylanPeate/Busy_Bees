@@ -35,9 +35,7 @@ router.post('/new-list', csrfProtection, asyncHandler, requireAuth, (async (req,
 }))
 
 //tasks
-router.post('/new-task', csrfProtection, asyncHandler, requireAuth, (async (req, res) => {
-    const user_id = req.session.auth.userId;
-
+router.post('/new-task', csrfProtection, asyncHandler, (async (req, res) => {
 }))
 
 router.get('/list/:id', requireAuth, (async (req, res) => {
@@ -49,7 +47,6 @@ router.get('/list/:id', requireAuth, (async (req, res) => {
     const tasks = await db.task.findAll({
         where: { list_id: pageId }
     })
-    console.log(pageId, "<-----PageId")
     res.render('home', { lists, pageId, tasks });
 }))
 
