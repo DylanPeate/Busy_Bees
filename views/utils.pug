@@ -7,9 +7,7 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
 
 mixin validationErrorSummary(errors)
-  if errors
     div(class='alert')
-      p The following error(s) occurred:
       ul
         each error in errors
           li= error
