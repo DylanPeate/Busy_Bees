@@ -24,6 +24,7 @@
     "pug": "2.0.4",
     "sequelize": "^5.22.5",
     "sequelize-cli": "^5.5.1",
+    "session": "^0.1.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {
