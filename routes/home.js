@@ -9,6 +9,12 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/models');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 
+router.get('/', requireAuth, (req, res) => {
+    res.render('home')
+})
+
+
+
 //list routes
 router.get('/new-list', csrfProtection, requireAuth, (req, res) => {
     res.render('new-list', { title: 'New-list', csrfToken: req.csrfToken() })
