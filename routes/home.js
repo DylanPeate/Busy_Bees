@@ -40,6 +40,18 @@ router.post('/new-task', csrfProtection, asyncHandler, requireAuth, (async (req,
 
 }))
 
+router.get('/list/:id', requireAuth, (async (req, res) => {
+    //get info
+    const lists = await db.list.findAll({
+        where: { user_id: req.session.auth.userId }
+    })
+    const pageId = parseInt(req.params.id, 10);
+    const tasks = await db.task.findAll({
+        where: { list_id: pageId }
+    })
+    console.log(pageId, "<-----PageId")
+    res.render('home', { lists, pageId, tasks });
+}))
 
 
 module.exports = router;
