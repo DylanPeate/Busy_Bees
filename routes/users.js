@@ -124,6 +124,12 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
     const newUser = await db.user.create({
       firstName, lastName, username, email, hashed_password
     })
+    await db.list.create({
+      name: "Personal", user_id: newUser.id
+    })
+    await db.list.create({
+      name: "Work", user_id: newUser.id
+    })
     res.redirect('/users/login')
   }
 })
