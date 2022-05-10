@@ -9,7 +9,7 @@ html
   body
     div(id="left-panel-log")
     div(id="right-panel-log")
-      button(type="submit" id="sign-up-button" class="btn-log") Sign up for free
+      a(type="button" id="sign-up-button" class="btn-log" href="/users/sign-up") Sign up for free
       label(for="login-form" id="form-text-log") Been here before? Welcome back!
       +validationErrorSummary(errors)
       form(id="login-form" method="post" action="/home")
