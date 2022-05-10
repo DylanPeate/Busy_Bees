@@ -1,0 +1,92 @@
+* {
+    background-color: #fcf9ee;
+  }
+
+  #left-panel-log {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #ffd129;
+    display: table;
+  }
+
+  #right-panel-log {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    background-color: #fcf9ee;
+    width: 50%;
+    max-height: 100%;
+    float: right;
+    position: relative;
+  }
+
+  .btn-log {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    /* vertical-align: middle; */
+    border: none;
+  }
+
+  #sign-up-button {
+    margin: 43px 0 0 450px;
+    flex-wrap: wrap;
+    color: #FCF9EE;
+    background-color: #646054;
+    border-radius: 3px;
+    padding: 7px 12px 7px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  #form-text-log {
+    /* position: relative;
+    flex-wrap: nowrap; */
+    margin: 20px 0px 28px 86px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 21px;
+    color: #4A401C;
+    font-weight: 550;
+    line-height: 1.1;
+    margin-top: 35%;
+  }
+
+  #login-form {
+    max-width: 400px;
+    margin-left: 100px;
+    display: grid;
+    justify-content: space-around;
+  }
+
+  .inputBox-log {
+    display: block;
+    color: #646054;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    height: 28px;
+    width: 400px;
+    padding: 10px 12px;
+    margin: 5px;
+    font-size: 23px;
+    line-height: 1.33;
+    border-radius: 3px;
+  }
+
+  #login-button-log {
+    height: 48px;
+    font-size: 20px;
+    color: #fcf9ee;
+    background-color: #FFD129;
+    max-width: 100%;
+    margin-top: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 12px;
+  }

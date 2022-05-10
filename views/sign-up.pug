@@ -1,20 +1,20 @@
 doctype html
 html
   head
-      block head
-        title="Busy Bees - Sign Up"
-        link(rel='stylesheet' href='/stylesheets/sign-up.css')
+    block head
+      title="Busy Bees - Sign Up"
+      link(rel='stylesheet' href='/stylesheets/sign-up.css')
   body
     div(id="left-panel")
     div(id="right-panel")
-        button(type="button" id="login-button" class="btn") Log in
-
-        form(id="sign-up-form" method="post" action="/users/sign-up")
-            input(type="hidden" name="_csrf" value=csrfToken)
-            input(type="text" id="firstName" class="inputBox" name="firstName" placeholder="First Name", required)
-            input(type="text" id="lastName" class="inputBox" name="lastName" placeholder="Last Name", required)
-            input(type="email" id="email" class="inputBox" name="email" placeholder="Email", required)
-            input(type="text" id="username" class="inputBox" name="username" placeholder="Username", required)
-            input(type="password" id="password" class="inputBox" name="password" placeholder="Password", required)
-            input(type="password" id="confirmPassword" class="inputBox" name="confirmPassword" placeholder="Confirm Password", required)
-            button(type="submit" id="signup-button" class="btn") Sign up!
+      button(type="button" id="login-button" class="btn") Log in
+      label(id="form-text") Sign up for free.
+      form(id="sign-up-form" method="post" action="/users/sign-up")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input(type="text" id="firstName" class="inputBox" name="firstName" placeholder="First Name", required)
+        input(type="text" id="lastName" class="inputBox" name="lastName" placeholder="Last Name", required)
+        input(type="email" id="email" class="inputBox" name="email" placeholder="Email", required)
+        input(type="text" id="username" class="inputBox" name="username" placeholder="Username", required)
+        input(type="password" id="password" class="inputBox" name="password" placeholder="Password", required)
+        input(type="password" id="confirmPassword" class="inputBox" name="confirmPassword" placeholder="Confirm Password", required)
+        button(type="submit" id="signup-button" class="btn") Sign up!
