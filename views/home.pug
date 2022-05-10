@@ -16,7 +16,8 @@ html
                 div(class="divider")
                 div(id="lists-title" class="text nav-text") Lists
                     each list in lists
-                        a(type="button" id=`list-#{list.id}` href=`/home/list/${list.id}`)= list.name
+                        div(class="list-divider")
+                        a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
