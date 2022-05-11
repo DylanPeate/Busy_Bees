@@ -16,14 +16,12 @@ router.get('/', requireAuth, async (req, res) => {
     const tasks = [];
     lists.forEach(async (list) => {
         listId = list.id;
-        console.log(list.id, "<-----LIST ID")
         currentTasks = await db.task.findAll({
             where: { list_id: listId }
         })
         tasks.push(...currentTasks)
     })
     setTimeout(() => {
-        console.log(tasks)
         res.render('home', { lists, tasks })
     }, 100)
 })
@@ -47,8 +45,9 @@ router.post('/new-list', csrfProtection, asyncHandler, requireAuth, (async (req,
 }))
 
 //tasks
-router.post('/new-task', csrfProtection, asyncHandler, (async (req, res) => {
-}))
+// router.post('/new-task', csrfProtection, asyncHandler, (async (req, res) => {
+
+// }))
 
 router.get('/list/:id', requireAuth, (async (req, res) => {
     //get info
@@ -59,7 +58,6 @@ router.get('/list/:id', requireAuth, (async (req, res) => {
     const tasks = await db.task.findAll({
         where: { list_id: pageId }
     })
-    console.log(tasks, '<------------Tasks')
     res.render('home', { lists, pageId, tasks });
 }))
 
