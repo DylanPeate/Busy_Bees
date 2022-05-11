@@ -89,9 +89,14 @@
   background-color: white;
 }
 
+.tasks-container {
+  overflow: auto;
+}
+
 #tasks-body-header {
   display: flex;
   background-color: white;
+  border-top-right-radius: 15px;
   height: 71px;
   width: 100%;
   justify-content: space-evenly;
