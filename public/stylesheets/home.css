@@ -15,6 +15,18 @@
   height: 40px;
 }
 
+#top-nav-search {
+  position: relative;
+  top: 4px;
+  right: 697px;
+  background-color: #ffe3a6;
+  color: #646054;
+  height: 80%;
+  width: 25%;
+  border-radius: 5px;
+  border: none;
+}
+
 .btn {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -30,7 +42,7 @@
   align-self: center;
   right: 3px;
   width: 50px;
-  height: 20px;
+  height: 16px;
   background-color: #646054;
   border-radius: 3px;
   padding: 7px 18px 7px 12px;
@@ -83,16 +95,20 @@
 #new-task-input {
   position: relative;
   height: 27px;
-  width: 80%;
+  width: 90%;
+  color: #646054;
+  font-family: sans-serif;
   border-radius: 8px;
   border-color: #F2D777;
 }
 
 #new-task-btn {
+  position: relative;
   background-color: #FFD129;
+  right: 2px;
   color: #646054;
-  width: 20px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   font-family: sans-serif;
   font-weight: bold;
   border-radius: 3px;
@@ -100,6 +116,11 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+}
+
+.task-input {
+  position: relative;
+  top: 18px;
 }
 
 .tasks-divider {
