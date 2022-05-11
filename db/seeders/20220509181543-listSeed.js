@@ -1,5 +1,6 @@
 'use strict';
 
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
@@ -12,6 +13,13 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    return queryInterface.bulkInsert('lists', [{
+      name: 'adminList',
+      completed: false,
+      user_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }])
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,5 +30,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+    return queryInterface.bulkDelete('lists', null, {});
   }
 };
