@@ -63,9 +63,9 @@ router.post('/login', csrfProtection, loginValidators,
     });
   }));
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   logoutUser(req, res)
-  res.redirect('/user/login')
+  res.redirect('/users/login')
 })
 
 
