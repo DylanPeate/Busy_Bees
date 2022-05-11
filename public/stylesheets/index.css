@@ -1,7 +1,7 @@
 #signup-div {
     position: relative;
     text-align-last: center;
-    padding-top: 1px;
+    padding-top: 30px;
     height: 215px;
     width: 100%;
     background-color: #FFD129;
@@ -29,6 +29,10 @@
     font-size: 25px;
     padding: 15px 25px;
     cursor: pointer;
+}
+
+.signup-btn:hover {
+    background-color: #4ebd00;
 }
 
 #body-div {

@@ -25,17 +25,21 @@
 }
 
 .btn {
+    color: #FCF9EE;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     text-align: center;
     text-decoration: none;
     border: none;
     margin: 0 8px 0 8px;
-  }
+}
+
+.btn:hover {
+    color: white;
+}
 
 .login-btn {
-    color: #FCF9EE;
-    background-color: #646054;
+    background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;
     font-size: 15px;
@@ -43,8 +47,7 @@
 }
 
 .demo-btn {
-    color: #FCF9EE;
-    background-color: #646054;
+    background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;
     font-size: 15px;
@@ -52,17 +55,16 @@
 }
 
 .signup-top-btn {
-    color: #FCF9EE;
-    background-color: #646054;
+    background-color: transparent;
     border-radius: 3px;
+    border: solid;
     padding: 7px 12px 7px;
     font-size: 15px;
     cursor: pointer;
 }
 
 .whats-new-btn {
-    color: #FCF9EE;
-    background-color: #646054;
+    background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;
     font-size: 15px;
