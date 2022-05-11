@@ -44,10 +44,6 @@ router.post('/new-list', csrfProtection, asyncHandler, requireAuth, (async (req,
     }
 }))
 
-//tasks
-// router.post('/new-task', csrfProtection, asyncHandler, (async (req, res) => {
-
-// }))
 
 router.get('/list/:id', requireAuth, (async (req, res) => {
     //get info
@@ -61,5 +57,38 @@ router.get('/list/:id', requireAuth, (async (req, res) => {
     res.render('home', { lists, pageId, tasks });
 }))
 
+// tasks
+router.post('/list/:id/new-task', csrfProtection, asyncHandler, (async (req, res) => {
+    const { name, date_due, priority, completed, deleted, notes } = req.body;
+
+    //get their main list id
+    const user_id = req.session.auth.userId;
+    const mainList = await db.list.findOne({
+        where: { userId: user_id, name: 'All Tasks' }
+    })
+
+    //check what list
+    const pageId = parseInt(req.params.id, 10);
+    if (pageId === mainList.id) {
+        //create task in mainList
+        await db.task.create({
+            name, date_due, priority, completed, list_id: mainList.id
+        })
+    } else {
+        //create task in mainlist and list with pageId
+        await db.task.create({
+            name, date_due, priority, completed, list_id: mainList.id
+        })
+        await db.task.create({
+            name, date_due, priority, completed, list_id: pageId
+        })
+    }
+
+    //create task
+    const newTask = await db.task.create({
+        name, priority, completed, deleted, notes, list_id
+    })
+
+}))
 
 module.exports = router;
