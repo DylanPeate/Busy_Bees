@@ -14,6 +14,7 @@ html
             div(id="left-nav-bar") Left Navbar
                 div(id="tasks-title" class="text nav-text") Tasks
                 div(class="divider")
+                a(type="submit" id="new-list-btn" href="/new-list") +
                 div(id="lists-title" class="text nav-text") Lists
                     each list in lists
                         div(class="list-divider")
@@ -21,8 +22,12 @@ html
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
-                    each task in tasks
-                        p= task.id
+                    input(type="text" id="new-task-input" name="task" placeholder="Add a new task here...")
+                    button(type="submit" id="new-task-btn") +
                 div(class="tasks-divider")
+                    p(class="task-single") hello
+                        each task in tasks
+                            p= task.id
+                            div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary
