@@ -7,6 +7,11 @@
     background-color: #FFD129;
 }
 
+#signup-button-div {
+    background-color: transparent;
+    margin-top: 10px;
+}
+
 .text {
     font-family: Arial, Helvetica, sans-serif;
     background-color: transparent;
@@ -38,11 +43,34 @@
 #body-div {
     height: 666.8px;
     width: 100%;
-    background-color: blue;
+    background-color: #ffcb00;
+    color: white;
+    text-align: center;
 }
 
 #footer-div {
     height: 323px;
     width: 100%;
     background-color: #FCF9EE;
+}
+
+#guy-phone-point {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: transparent;
+    width: 600px;
+    height: 450px;
+}
+
+#guy-phone-text {
+    font-size: 35px;
+}
+
+#guy-phone-desc {
+    margin-top: 15px;
+}
+
+#footer-container {
+    text-align: center;
+    margin-top: 152px;
 }

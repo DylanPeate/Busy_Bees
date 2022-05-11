@@ -89,9 +89,25 @@
   background-color: white;
 }
 
+.tasks-container {
+  overflow: auto;
+  height: 830px;
+}
+
+.tasks-container::-webkit-scrollbar {
+  width: 1em;
+  background-color: #FCF9EE;
+  /* outline: 1px solid slategrey; */
+}
+
+.tasks-container::-webkit-scrollbar-thumb {
+  background-color: #bb8c3621;
+}
+
 #tasks-body-header {
   display: flex;
   background-color: white;
+  border-top-right-radius: 15px;
   height: 71px;
   width: 100%;
   justify-content: space-evenly;
