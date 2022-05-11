@@ -1,5 +1,6 @@
 * {
   background-color: #fcf9ee;
+  margin: 0;
 }
 
 .text {
@@ -63,6 +64,10 @@
   flex-direction: column;
   height: 100%;
   width: 15%;
+  min-width: 175px;
+  max-width: 210px;
+  margin-left: 10px;
+  margin-right: 5px;
   background-color: #fcf9ee;
 }
 
@@ -78,24 +83,40 @@
   right: -13px;
   height: 100%;
   width: 50%;
+  min-width: 570px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   background-color: white;
 }
 
+.tasks-container {
+  overflow: auto;
+}
+
 #tasks-body-header {
   display: flex;
   background-color: white;
+  border-top-right-radius: 15px;
   height: 71px;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
 }
 
+#input-bar {
+  position: relative;
+  top: 5px;
+  left: -5px;
+  text-align-last: center;
+  width: 100%;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
 #new-task-input {
   position: relative;
   height: 27px;
-  width: 90%;
+  width: 85%;
   color: #646054;
   font-family: sans-serif;
   border-radius: 8px;
@@ -105,7 +126,7 @@
 #new-task-btn {
   position: relative;
   background-color: #FFD129;
-  right: 2px;
+  left: 8px;
   color: #646054;
   width: 28px;
   height: 28px;
@@ -123,20 +144,38 @@
   top: 18px;
 }
 
-.tasks-divider {
+.tasks-divider-top {
   position: relative;
   top: 10px;
   background-color: transparent;
   border-top: 1px solid;
-  border-bottom: 1px solid;
   border-color: #f1eeea;
   width: 100%;
-  height: 32px;
 }
 
+.tasks-divider {
+  position: relative;
+  background-color: transparent;
+  border-top: 1px solid;
+  border-color: #f1eeea;
+  width: 100%;
+}
+
+/* .block-quote {
+  background-color: transparent;
+  border-left: solid red;
+} */
+
 .task-single {
+  font-size: 15px;
+  position: relative;
+  line-height: 3.5;
+  padding-left: 33px;
+  border-left: solid #F2D777;
+  top: 1px;
   background-color: white;
 }
+
 
 .nav-text {
   margin-top: 50px;
@@ -149,6 +188,7 @@
   padding-left: 35px;
   height: 100%;
   width: 35%;
+  min-width: 300px;
   border-top-right-radius: 15px;
   background-color: #f2d777;
 }
@@ -174,7 +214,7 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    line-height: 2;
+    line-height: 4;
     font-size: 12px;
     margin-top: 40px;
     margin-bottom: -5px;
