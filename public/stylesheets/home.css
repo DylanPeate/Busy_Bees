@@ -92,10 +92,17 @@
   align-items: center;
 }
 
+#input-bar {
+  width: 100%;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
 #new-task-input {
   position: relative;
   height: 27px;
-  width: 90%;
+  width: 80%;
+  margin: 0px 25px;
   color: #646054;
   font-family: sans-serif;
   border-radius: 8px;
@@ -128,13 +135,15 @@
   top: 10px;
   background-color: transparent;
   border-top: 1px solid;
-  border-bottom: 1px solid;
   border-color: #f1eeea;
   width: 100%;
-  height: 32px;
 }
 
 .task-single {
+  font-size: 15px;
+  position: relative;
+  margin-left: 16px;
+  top: 11px;
   background-color: white;
 }
 
