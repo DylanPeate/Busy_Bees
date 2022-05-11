@@ -13,7 +13,19 @@ router.get('/', requireAuth, async (req, res) => {
     const lists = await db.list.findAll({
         where: { user_id: req.session.auth.userId }
     })
-    res.render('home', { lists })
+    const tasks = [];
+    lists.forEach(async (list) => {
+        listId = list.id;
+        console.log(list.id, "<-----LIST ID")
+        currentTasks = await db.task.findAll({
+            where: { list_id: listId }
+        })
+        tasks.push(...currentTasks)
+    })
+    setTimeout(() => {
+        console.log(tasks)
+        res.render('home', { lists, tasks })
+    }, 100)
 })
 
 
@@ -47,6 +59,7 @@ router.get('/list/:id', requireAuth, (async (req, res) => {
     const tasks = await db.task.findAll({
         where: { list_id: pageId }
     })
+    console.log(tasks, '<------------Tasks')
     res.render('home', { lists, pageId, tasks });
 }))
 
