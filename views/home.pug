@@ -21,6 +21,8 @@ html
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
+                    each task in tasks
+                        p= task.id
                 div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary

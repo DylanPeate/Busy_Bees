@@ -10,8 +10,7 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING(255),
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       date_due: {
         type: Sequelize.DATE
