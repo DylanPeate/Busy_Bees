@@ -12,7 +12,7 @@ html
             input(type="search" id="top-nav-search")
             a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
-            div(id="left-nav-bar") Left Navbar
+            div(id="left-nav-bar") LOGO
                 div(id="tasks-title" class="text nav-text") Tasks
                 div(class="divider")
                 a(type="submit" id="new-list-btn" href="/home/new-list") +
@@ -21,14 +21,15 @@ html
                         div(class="list-divider")
                         a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
                 div(class="divider")
-            div(id="task-lists-body") Tasks go here
+            div(id="task-lists-body")
                 div(id="tasks-body-header")
                     form(action=`/home/list/${pageId}/new-task` id="input-bar" method="post")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type="text" id="new-task-input" name="name" placeholder="Add a new task here...")
                         button(type="submit" id="new-task-btn") +
-                div(class="tasks-divider text")
+                div(class="tasks-divider-top text")
                         each task in tasks
+                            //- div(class="block-quote") |
                             p(class="task-single")= task.name
                             div(class="tasks-divider")
             div(id="list-summary")
