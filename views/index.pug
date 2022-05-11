@@ -5,3 +5,11 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
+
+block content
+  div(id="signup-div")
+    h1(id="signup-text" class="text") The smart to-do app for busy bees.
+    a(type="button" class="signup-btn btn" href="/users/sign-up") Sign up for free
+  div(id="body-div")
+  div(id="footer-div")
+    div(class="footer-container")
