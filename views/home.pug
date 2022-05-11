@@ -9,18 +9,20 @@ html
   body
     header
         div(id="top-nav")
-            a(type="button" id="logout-button" class="btn" href="/users/login") Log Out
+            a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
             div(id="left-nav-bar") Left Navbar
                 div(id="tasks-title" class="text nav-text") Tasks
                 div(class="divider")
-                label(id="lists-title" class="text nav-text" for="lists") Lists
-                    select(id="list-select" name="lists")
-                        each list in lists
-                            option(value= list.id)=list.name
+                div(id="lists-title" class="text nav-text") Lists
+                    each list in lists
+                        div(class="list-divider")
+                        a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
+                    each task in tasks
+                        p= task.id
                 div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary

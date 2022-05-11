@@ -12,6 +12,997 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    return queryInterface.bulkInsert('tasks', [{
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    }, {
+      name: 'Test Task',
+      date_due: null,
+      priority: null,
+      completed: false,
+      notes: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      list_id: 1
+    },])
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,5 +1013,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+    return queryInterface.bulkDelete('tasks', null, {});
   }
 };
