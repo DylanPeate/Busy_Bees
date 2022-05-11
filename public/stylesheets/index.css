@@ -7,6 +7,11 @@
     background-color: #FFD129;
 }
 
+#signup-button-div {
+    background-color: transparent;
+    margin-top: 10px;
+}
+
 .text {
     font-family: Arial, Helvetica, sans-serif;
     background-color: transparent;
@@ -66,5 +71,6 @@
 }
 
 #footer-container {
-   grid-column: auto;
+    text-align: center;
+    margin-top: 152px;
 }
