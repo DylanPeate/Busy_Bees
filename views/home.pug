@@ -23,14 +23,13 @@ html
                 div(class="divider")
             div(id="task-lists-body") Tasks go here
                 div(id="tasks-body-header")
-                    form(action=`/home/list/${pageId}/new-task` method="post")
+                    form(action=`/home/list/${pageId}/new-task` id="input-bar" method="post")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type="text" id="new-task-input" name="name" placeholder="Add a new task here...")
                         button(type="submit" id="new-task-btn") +
-                div(class="tasks-divider")
-                    p(class="task-single") hello
+                div(class="tasks-divider text")
                         each task in tasks
-                            p= task.name
+                            p(class="task-single")= task.name
                             div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary
