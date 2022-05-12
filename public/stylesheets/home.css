@@ -273,10 +273,11 @@
 
 #list-form-container {
   position: absolute;
-  top: 206px;
+  top: 195px;
   width: 175px;
   height: 80px;
-  background-color: red;
+  box-shadow: 0 0 4px #646054;
+  background-color: #FFD129;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-evenly;
@@ -284,11 +285,32 @@
 }
 
 #listName {
-  width: -webkit-fill-available;
+  position: relative;
+  font-family: sans-serif;
+  border-color: #F2D777;
+  text-align-last: center;
+  border-radius: 8px;
+  padding: 3px 0;
+  top: 12px;
+  top: 13px;
+  left: 16px;
+  width: 80%;
 }
 
 #cancel-btn {
   place-self: center;
+  color: #fcf9ee;
+  white-space: nowrap;
+  align-self: center;
+  font-family: sans-serif;
+  background-color: #646054;
+  border-radius: 3px;
+  padding: 6px 20px;
+  margin-right: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 #delete-list-btn {
@@ -381,6 +403,28 @@
 
 #add-list-buttons {
   display: flex;
+  background-color: transparent;
   flex-direction: row;
+  position: relative;
+  top: 21px;
+  left: 3px;
   justify-content: space-around;
+}
+
+#new-list-form {
+  background-color: transparent;
+}
+
+#create-list-btn {
+  color: #fcf9ee;
+  white-space: nowrap;
+  align-self: center;
+  background-color: #646054;
+  border-radius: 3px;
+  padding: 6px 10px;
+  margin-right: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
 }

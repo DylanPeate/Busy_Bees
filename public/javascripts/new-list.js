@@ -70,6 +70,9 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         })
     }
 
+
+
+
     confirmNoBtn.addEventListener("click", (e) => {
         if (confirmationPopUp.classList.contains("hidden")) {
             confirmationPopUp.classList.remove("hidden")

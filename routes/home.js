@@ -59,9 +59,6 @@ router.get('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (
     const tasks = await db.task.findAll({
         where: { user_id }
     })
-    // const mainList = await db.list.findOne({
-    //     where: { user_id: user_id, name: 'All Tasks' }
-    // })
     const deletedList = await db.list.findOne({
         where: {
             id: pageId
@@ -74,20 +71,6 @@ router.get('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (
         }
     })
     await deletedList.destroy();
-
-    // if (mainList.id !== deletedList.id) {
-    //     await db.task.destroy({
-    //         where: {
-    //             list_id: pageId
-    //         }
-    //     })
-    //     await db.task.destroy({
-    //         where: {
-
-    //         }
-    //     })
-    //     await deletedList.destroy();
-    // }
 
     res.redirect('/home')
 }))
