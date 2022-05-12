@@ -223,15 +223,6 @@
 
 .new-list {
   display: flex;
-<<<<<<< HEAD
-  flex-direction: column;
-  text-decoration: none;
-  line-height: 4;
-  font-size: 12px;
-  margin-top: 40px;
-  margin-bottom: -5px;
-  color: #6f5f4e9c;
-=======
   flex-direction: row;
   text-decoration: none;
   line-height: 4;
@@ -241,7 +232,6 @@
   margin-bottom: -5px;
   color: #6f5f4e9c;
   background-color: transparent;
->>>>>>> origin/main
   font-weight: bold;
 }
 

@@ -11,39 +11,25 @@ html
   body
     header
         div(id="top-nav")
-            input(type="search" id="top-nav-search" name="searchInput")
-            a(type="submit" id="search-button" href= "/home/search")="Search"
+            input(type="search" id="top-nav-search")
             a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
             div(id="left-nav-bar") LOGO
+                div(id="left-nav-header")
                 div(id="tasks-title" class="text nav-text") Tasks
                     a(type="button" id=`all-tasks` class="all-tasks-button" href=`/home`)= "All Tasks"
-                div(class="divider")
-<<<<<<< HEAD
-                a(type="submit" id="new-list-btn" href="/home/new-list") +
-                div(id="lists-title" class="text nav-text") Lists
-                    each list in lists
-                        div(class="list-divider")
-                        a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
-                        a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
-                        //- a(type="button" id=`edit-list-#{list.id}` class= "edit-button" href="")= "edit"
-                        button(id="edit-list-btn")= "edit"
-=======
+                div(id="task-title-divider" class="divider")
                 div(id="lists-bar")
                     button(type="submit" id="new-list-btn" class="list-btn" href="/home/new-list") +
                     div(id="list-form-container" class="hidden")
                         form(method="POST" action="/home" id="new-list-form")
                             input(type="text" id="listName" name="listName" placeholder="List Name", required)
-                        button(type="submit" id="create-list-btn") Create List
-                        a(type="button" id="cancel-btn" href="/home") Cancel
-                    div(id="lists-title" class="list-container text nav-text") Lists
+                        div(id="add-list-buttons")
+                            button(type="submit" id="create-list-btn") Create List
+                            a(type="button" id="cancel-btn" href="/home") Cancel
+                    div(id="lists-title" class="text nav-text") Lists
                         each list in lists
                             div(class="list-divider")
-<<<<<<< HEAD
-                            a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
-                            a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
->>>>>>> origin/main
-=======
                             div(id="list-with-button")
                                 a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
                                 button(id="delete-list-btn" class="btn") -
@@ -52,7 +38,6 @@ html
                                 div(id="confirm-yes-no-buttons")
                                     a(type="button" id=`delete-list-#{list.id}` class= "yes-button btn" href=`/home/list/${list.id}/delete`) ✔
                                     button(id="no-confirm-btn" class="btn") ❌
->>>>>>> origin/main
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")
