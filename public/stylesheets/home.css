@@ -249,3 +249,27 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.hidden {
+  display: none;
+}
+
+#list-form-container {
+  position: absolute;
+  top: 206px;
+  width: 175px;
+  height: 80px;
+  background-color: red;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  border-radius: 7px;
+}
+
+#listName {
+  width: -webkit-fill-available;
+}
+
+#cancel-btn {
+  place-self: center;
+}

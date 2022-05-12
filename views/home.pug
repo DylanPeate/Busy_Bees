@@ -7,6 +7,7 @@ html
       title="Busy Bees - Home"
       link(rel='stylesheet' href='/stylesheets/home.css')
       script(src='/javascripts/index.js')
+      script(src="/javascripts/new-list.js")
   body
     header
         div(id="top-nav")
@@ -18,6 +19,7 @@ html
                 div(id="tasks-title" class="text nav-text") Tasks
                     a(type="button" id=`all-tasks` class="all-tasks-button" href=`/home`)= "All Tasks"
                 div(class="divider")
+<<<<<<< HEAD
                 a(type="submit" id="new-list-btn" href="/home/new-list") +
                 div(id="lists-title" class="text nav-text") Lists
                     each list in lists
@@ -26,6 +28,20 @@ html
                         a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
                         //- a(type="button" id=`edit-list-#{list.id}` class= "edit-button" href="")= "edit"
                         button(id="edit-list-btn")= "edit"
+=======
+                div(id="lists-bar")
+                    button(type="submit" id="new-list-btn" class="list-btn" href="/home/new-list") +
+                    div(id="list-form-container" class="hidden")
+                        form(method="POST" action="/home" id="new-list-form")
+                            input(type="text" id="listName" name="listName" placeholder="List Name", required)
+                        button(type="submit" id="create-list-btn") Create List
+                        a(type="button" id="cancel-btn" href="/home") Cancel
+                    div(id="lists-title" class="text nav-text") Lists
+                        each list in lists
+                            div(class="list-divider")
+                            a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
+                            a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
+>>>>>>> origin/main
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")
