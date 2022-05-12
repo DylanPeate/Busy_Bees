@@ -440,6 +440,7 @@
 }
 
 #bee-icon {
-  width: 175px;
-  height: 175px;
+  position: relative;
+  left: 3px;
+  top: 10px;
 }
