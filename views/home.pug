@@ -25,7 +25,7 @@ html
                             input(type="text" id="listName" name="listName" placeholder="List Name", required)
                         button(type="submit" id="create-list-btn") Create List
                         a(type="button" id="cancel-btn" href="/home") Cancel
-                    div(id="lists-title" class="text nav-text") Lists
+                    div(id="lists-title" class="list-container text nav-text") Lists
                         each list in lists
                             div(class="list-divider")
                             a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
