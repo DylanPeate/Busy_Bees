@@ -28,8 +28,14 @@ html
                     div(id="lists-title" class="text nav-text") Lists
                         each list in lists
                             div(class="list-divider")
-                            a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
-                            a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
+                            div(id="list-with-button")
+                                a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
+                                button(id="delete-list-btn" class="btn") -
+                            div(id="confirm-delete" class="hidden")
+                                p(class="confirm-list text") Delete List?
+                                div(id="confirm-yes-no-buttons")
+                                    a(type="button" id=`delete-list-#{list.id}` class= "yes-button btn" href=`/home/list/${list.id}/delete`) ✔
+                                    button(id="no-confirm-btn" class="btn") ❌
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")
