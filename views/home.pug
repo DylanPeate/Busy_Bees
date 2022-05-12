@@ -14,12 +14,14 @@ html
         div(id="body")
             div(id="left-nav-bar") LOGO
                 div(id="tasks-title" class="text nav-text") Tasks
+                    a(type="button" id=`all-tasks` class="all-tasks-button" href=`/home`)= "All Tasks"
                 div(class="divider")
                 a(type="submit" id="new-list-btn" href="/home/new-list") +
                 div(id="lists-title" class="text nav-text") Lists
                     each list in lists
                         div(class="list-divider")
                         a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
+                        a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")

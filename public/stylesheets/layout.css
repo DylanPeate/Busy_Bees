@@ -35,6 +35,10 @@
     margin: 0 8px 0 8px;
 }
 
+.top-btn {
+    font-size: 17px;
+}
+
 .btn:hover {
     color: white;
 }
@@ -43,7 +47,6 @@
     background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;
-    font-size: 15px;
     cursor: pointer;
 }
 
@@ -51,7 +54,6 @@
     background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;
-    font-size: 15px;
     cursor: pointer;
 }
 
@@ -60,7 +62,6 @@
     border-radius: 3px;
     border: solid;
     padding: 7px 12px 7px;
-    font-size: 15px;
     cursor: pointer;
 }
 
@@ -68,7 +69,6 @@
     background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;
-    font-size: 15px;
     cursor: pointer;
 }
 
