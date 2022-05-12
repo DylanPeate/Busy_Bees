@@ -24,7 +24,7 @@ html
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")
-                    form(action=`/home/list/${pageId}/new-task` id="input-bar" method="post")
+                    form(id="input-bar")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type="text" id="new-task-input" name="name" placeholder="Add a new task here...")
                         button(type="submit" id="new-task-btn") +
