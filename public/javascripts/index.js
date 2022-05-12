@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     "Content-Type": "application/json"
                 },
             });
-
+            taskName.value = ''
             if (!res.ok) {
                 throw res;
             }
