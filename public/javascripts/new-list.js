@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     const listBtn = document.querySelector(".list-btn")
     const createListBtn = document.getElementById('create-list-btn')
     const stupidTextField = document.getElementById('listName')
+    const deleteBtn = document.getElementById("delete-list-btn")
+    const confirmNoBtn = document.getElementById("no-confirm-btn")
+    const confirmationPopUp = document.getElementById("confirm-delete");
 
     stupidTextField.addEventListener("keydown", (e) => {
         if (e.keyCode == 13) {
@@ -20,7 +23,6 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             form.classList.add("hidden")
         }
     })
-
 
     createListBtn.addEventListener("click", async (e) => {
         e.preventDefault()
@@ -53,6 +55,25 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             }
         }
 
+    })
+
+    deleteBtn.addEventListener("click", (e) => {
+        if (confirmationPopUp.classList.contains("hidden")) {
+            confirmationPopUp.classList.remove("hidden")
+        } else {
+            confirmationPopUp.classList.add("hidden")
+        }
 
     })
+
+    confirmNoBtn.addEventListener("click", (e) => {
+        if (confirmationPopUp.classList.contains("hidden")) {
+            confirmationPopUp.classList.remove("hidden")
+        } else {
+            confirmationPopUp.classList.add("hidden")
+        }
+
+    })
+
+
 })
