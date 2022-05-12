@@ -63,9 +63,9 @@ router.post('/login', csrfProtection, loginValidators,
     });
   }));
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   logoutUser(req, res)
-  res.redirect('/user/login')
+  res.redirect('/users/login')
 })
 
 
@@ -123,6 +123,15 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
     console.log(hashed_password)
     const newUser = await db.user.create({
       firstName, lastName, username, email, hashed_password
+    })
+    await db.list.create({
+      name: "Personal", user_id: newUser.id
+    })
+    await db.list.create({
+      name: "Work", user_id: newUser.id
+    })
+    await db.list.create({
+      name: "All Tasks", user_id: newUser.id
     })
     res.redirect('/users/login')
   }

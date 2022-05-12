@@ -10,11 +10,6 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING(255),
-        allowNull: false,
-        unique: true
-      },
-      date_created: {
-        type: Sequelize.DATE,
         allowNull: false
       },
       date_due: {
@@ -25,6 +20,7 @@ module.exports = {
       },
       completed: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
         allowNull: false
       },
       notes: {
@@ -33,7 +29,7 @@ module.exports = {
       list_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: 'lists'}
+        references: { model: 'lists' }
       },
       createdAt: {
         allowNull: false,

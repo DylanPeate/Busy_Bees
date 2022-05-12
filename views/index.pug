@@ -7,5 +7,9 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  div(id="signup-div")
+    h1(id="signup-text" class="text") The smart to-do app for busy bees.
+    a(type="button" class="signup-btn btn" href="/users/sign-up") Sign Up Free
+  div(id="body-div")
+  div(id="footer-div")
+    div(class="footer-container")
