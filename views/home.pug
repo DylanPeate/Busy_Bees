@@ -10,7 +10,8 @@ html
   body
     header
         div(id="top-nav")
-            input(type="search" id="top-nav-search")
+            input(type="search" id="top-nav-search" name="searchInput")
+            a(type="submit" id="search-button" href= "/home/search")="Search"
             a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
             div(id="left-nav-bar") LOGO
@@ -23,6 +24,8 @@ html
                         div(class="list-divider")
                         a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
                         a(type="button" id=`delete-list-#{list.id}` class= "delete-button" href=`/home/list/${list.id}/delete`)= "delete"
+                        //- a(type="button" id=`edit-list-#{list.id}` class= "edit-button" href="")= "edit"
+                        button(id="edit-list-btn")= "edit"
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")
