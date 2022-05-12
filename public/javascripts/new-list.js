@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     const listBtn = document.querySelector(".list-btn")
     const createListBtn = document.getElementById('create-list-btn')
     const stupidTextField = document.getElementById('listName')
-    const deleteBtn = document.getElementById("delete-list-btn")
+    // const deleteBtn = document.getElementById("delete-list-btn")
+    const deleteBtn = document.querySelectorAll('.delete-btn')
     const confirmNoBtn = document.getElementById("no-confirm-btn")
     const confirmationPopUp = document.getElementById("confirm-delete");
 
@@ -57,14 +58,17 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 
     })
 
-    deleteBtn.addEventListener("click", (e) => {
-        if (confirmationPopUp.classList.contains("hidden")) {
-            confirmationPopUp.classList.remove("hidden")
-        } else {
-            confirmationPopUp.classList.add("hidden")
-        }
+    for (let i = 0; i < deleteBtn.length; i++) {
+        deleteButton = deleteBtn[i];
+        deleteButton.addEventListener("click", (e) => {
+            if (confirmationPopUp.classList.contains("hidden")) {
+                confirmationPopUp.classList.remove("hidden")
+            } else {
+                confirmationPopUp.classList.add("hidden")
+            }
 
-    })
+        })
+    }
 
     confirmNoBtn.addEventListener("click", (e) => {
         if (confirmationPopUp.classList.contains("hidden")) {

@@ -32,7 +32,7 @@ html
                             div(class="list-divider")
                             div(id="list-with-button")
                                 a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
-                                button(id="delete-list-btn" class="btn") -
+                                button(id="delete-list-btn" class="btn delete-btn") -
                             div(id="confirm-delete" class="hidden")
                                 p(class="confirm-list text") Delete List?
                                 div(id="confirm-yes-no-buttons")
