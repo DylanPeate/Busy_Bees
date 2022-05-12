@@ -71,6 +71,26 @@
   background-color: #fcf9ee;
 }
 
+
+#tasks-title {
+  display: flex;
+  position: relative;
+  top: 10px;
+  flex-direction: column;
+}
+
+#all-tasks {
+  color: #6f5f4e9c;
+  text-decoration: none;
+  line-height: 4;
+}
+
+#task-title-divider {
+  display: flex;
+  position: relative;
+  top: 10px;
+}
+
 .divider {
   margin: 6px 0 -35px 0;
   background-color: #efe3b6;
@@ -171,11 +191,6 @@
   border-color: #f1eeea;
   width: 100%;
 }
-
-/* .block-quote {
-  background-color: transparent;
-  border-left: solid red;
-} */
 
 .task-single {
   font-size: 15px;
@@ -362,4 +377,10 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+}
+
+#add-list-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
