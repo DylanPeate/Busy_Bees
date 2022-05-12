@@ -41,6 +41,21 @@ router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
 }))
 
 
+//lists
+
+router.post('/new-list', requireAuth, asyncHandler(async (req, res) => {
+  const user_id = req.session.auth.userId;
+  const { name } = req.body;
+  let createdTask;
+
+  createdTask = await db.list.create({ name, user_id })
+
+  return res.json({ createdTask })
+}))
+
+
+
+
 
 module.exports = router;
 
