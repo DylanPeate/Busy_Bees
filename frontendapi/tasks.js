@@ -10,7 +10,7 @@ const { task } = db;
 
 // test route handler
 router.get('/tasks', async (req, res) => {
-  const allTasks = await tasks.findAll();
+  const allTasks = await task.findAll();
 
   res.json({ allTasks })
 });
@@ -46,7 +46,3 @@ module.exports = router;
 
 
 // `/home/list/${pageId}/new-task` <--- former action attribute in home page form for tasks
-
-
-
-module.exports = router;
