@@ -15,17 +15,19 @@ html
             a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
             div(id="left-nav-bar") LOGO
+                div(id="left-nav-header")
                 div(id="tasks-title" class="text nav-text") Tasks
                     a(type="button" id=`all-tasks` class="all-tasks-button" href=`/home`)= "All Tasks"
-                div(class="divider")
+                div(id="task-title-divider" class="divider")
                 div(id="lists-bar")
                     button(type="submit" id="new-list-btn" class="list-btn" href="/home/new-list") +
                     div(id="list-form-container" class="hidden")
                         form(method="POST" action="/home" id="new-list-form")
                             input(type="text" id="listName" name="listName" placeholder="List Name", required)
-                        button(type="submit" id="create-list-btn") Create List
-                        a(type="button" id="cancel-btn" href="/home") Cancel
-                    div(id="lists-title" class="list-container text nav-text") Lists
+                        div(id="add-list-buttons")
+                            button(type="submit" id="create-list-btn") Create List
+                            a(type="button" id="cancel-btn" href="/home") Cancel
+                    div(id="lists-title" class="text nav-text") Lists
                         each list in lists
                             div(class="list-divider")
                             div(id="list-with-button")
