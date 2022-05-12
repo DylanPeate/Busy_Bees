@@ -1,1 +1,12 @@
-p hi
+doctype html
+html
+  head
+    block head
+      title="Busy Bees - Create a New List"
+      link(rel='stylesheet' href='/stylesheets/new-list.css')
+  body
+    div(id="form-container")
+        form(method="POST" action="/home")
+            input(type="text" id="listName" name="listName" placeholder="List Name", required)
+        button(type="submit" id="create-list-btn") Create List
+        a(type="button" id="cancel-btn" href="/home") Cancel
