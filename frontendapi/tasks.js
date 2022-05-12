@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { asyncHandler } = require('../utils')
 const db = require('../db/models');
+const { requireAuth } = require('../auth');
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
 const { task } = db;
 
 
@@ -14,11 +17,10 @@ router.get('/tasks', async (req, res) => {
 
 
 // post route handler to submit task data sent from javascripts/index.js
-router.post('/tasks', asyncHandler(async (req, res) => {
+router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
   const user_id = req.session.auth.userId;
   const url = req.headers.referer.split('/');
   const pageId = url[url.length - 1]
-  console.log(pageId, "<--Page ID")
   const { name } = req.body;
 
   if (pageId === "home") {
