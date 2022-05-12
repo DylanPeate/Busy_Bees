@@ -65,6 +65,37 @@ router.get('/list/:id', csrfProtection, requireAuth, (async (req, res) => {
     res.render('home', { lists, pageId, tasks, csrfToken: req.csrfToken() });
 }))
 
+// tasks
+// router.post('/list/:id/new-task', csrfProtection, asyncHandler(async (req, res, next) => {
+//     const { name, date_due, priority, completed, deleted } = req.body;
+//     //get their main list id
+//     const user_id = req.session.auth.userId;
+//     const mainList = await db.list.findOne({
+//         where: { user_id, name: 'All Tasks' }
+//     })
+//     //ADD CSRF ON ALL /HOME RENDERS
+//     //check what list
+//     let pageId = parseInt(req.params.id, 10);
+
+//     if (pageId === mainList.id || pageId === NaN) {
+//         //create task in mainList
+//         await db.task.create({
+//             name, date_due, priority, completed, list_id: mainList.id
+//         })
+//         pageId = mainList.id;
+//     } else {
+//         //create task in mainlist and list with pageId
+//         await db.task.create({
+//             name, date_due, priority, completed, list_id: mainList.id
+//         })
+//         await db.task.create({
+//             name, date_due, priority, completed, list_id: pageId
+//         })
+//     }
+
+//     res.redirect(`/home/list/${pageId}`)
+
+// }))
 
 
 module.exports = router;
