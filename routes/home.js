@@ -14,24 +14,11 @@ router.get('/', requireAuth, csrfProtection, async (req, res) => {
     const lists = await db.list.findAll({
         where: { user_id: req.session.auth.userId }
     })
-    const mainList = await db.list.findOne({
-        where: { user_id: user_id, name: 'All Tasks' }
+    const tasks = await db.task.findAll({
+        where: { user_id }
     })
-    const pageId = mainList.id;
 
-    // const tasks = [];
-    // lists.forEach(async (list) => {
-    //     listId = list.id;
-    //     currentTasks = await db.task.findAll({
-    //         where: { list_id: listId }
-    //     })
-    //     tasks.push(...currentTasks)
-    // })
-    // setTimeout(() => {
-    //     res.render('home', { lists, pageId, tasks, crsfToken: req.csrfToken() })
-    // }, 100)
-
-    res.redirect(`/home/list/${pageId}`)
+    res.render('home', { lists, tasks, csrfToken: req.csrfToken() })
 })
 
 
@@ -55,6 +42,7 @@ router.post('/new-list', csrfProtection, asyncHandler, requireAuth, (async (req,
 
 router.get('/list/:id', csrfProtection, requireAuth, (async (req, res) => {
     //get info
+    const user_id = req.session.auth.userId;
     const lists = await db.list.findAll({
         where: { user_id: req.session.auth.userId }
     })
@@ -64,6 +52,48 @@ router.get('/list/:id', csrfProtection, requireAuth, (async (req, res) => {
     })
     res.render('home', { lists, pageId, tasks, csrfToken: req.csrfToken() });
 }))
+
+router.get('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+    const pageId = parseInt(req.params.id, 10);
+    const user_id = req.session.auth.userId;
+    const tasks = await db.task.findAll({
+        where: { user_id }
+    })
+    // const mainList = await db.list.findOne({
+    //     where: { user_id: user_id, name: 'All Tasks' }
+    // })
+    const deletedList = await db.list.findOne({
+        where: {
+            id: pageId
+        }
+    })
+    await db.task.destroy({
+        where: {
+            list_id: pageId,
+            user_id
+        }
+    })
+    await deletedList.destroy();
+
+    // if (mainList.id !== deletedList.id) {
+    //     await db.task.destroy({
+    //         where: {
+    //             list_id: pageId
+    //         }
+    //     })
+    //     await db.task.destroy({
+    //         where: {
+
+    //         }
+    //     })
+    //     await deletedList.destroy();
+    // }
+
+    res.redirect('/home')
+}))
+
+
+
 
 
 

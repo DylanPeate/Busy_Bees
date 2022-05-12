@@ -32,3 +32,7 @@ module.exports = router;
 
 
 // `/home/list/${pageId}/new-task` <--- former action attribute in home page form for tasks 
+
+
+
+module.exports = router;

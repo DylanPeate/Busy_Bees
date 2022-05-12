@@ -26,9 +26,13 @@ module.exports = {
       notes: {
         type: Sequelize.STRING(500)
       },
-      list_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: 'users' }
+      },
+      list_id: {
+        type: Sequelize.INTEGER,
         references: { model: 'lists' }
       },
       createdAt: {
