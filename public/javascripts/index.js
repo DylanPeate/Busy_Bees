@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         newListInput.setAttribute('name', 'select-list')
         newListInput.setAttribute('id', 'task-form-select')
 
+        const noneOption = document.createElement('option');
+        noneOption.setAttribute('value', 'no changes')
+        noneOption.innerText = 'No Changes';
+
+        newListInput.appendChild(noneOption);
         newListDiv.appendChild(newListLabel);
         newListDiv.appendChild(newListInput);
 
@@ -87,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const taskContainer = document.querySelector('.tasks-container');
     const taskName = document.getElementById('new-task-input');
 
-
+    
     // POST request -> create new task on click of 'new task' button
     // (front-end api)
     newTaskBtn.addEventListener('click', async (e) => {
@@ -97,11 +102,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         taskElement.innerText = taskName.value;
         taskElement.className = 'task-single'
         taskContainer.appendChild(taskElement);
-
+       
 
         const name = taskName.value;
         const body = { name };
-
         try {
             // FETCH -> post request
             const res = await fetch('http://localhost:8080/api/tasks',
@@ -116,6 +120,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             taskElement.setAttribute('id', res.task)
             taskName.value = ''
+
+             // IN PROGRESS CHECKBOX FUNCTIONALITY 
+            if (taskElement.nextSibling === null) {
+                const checkboxForm = document.createElement('form');
+                checkboxForm.setAttribute('id', 'completed-checkbox')
+
+                const checkbox = document.createElement('input');
+                checkbox.setAttribute('type', 'checkbox')
+                checkbox.setAttribute('id', `c-${res.task}`)
+                checkbox.setAttribute('class', 'c-checkbox')
+                checkboxForm.appendChild(checkbox);
+
+                taskContainer.appendChild(checkboxForm);
+            }
+
         } catch (e) {
             console.log(e)
         }
@@ -126,13 +145,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     taskContainer.addEventListener('click', async (e) => {
         const taskEle = e.target;
         if (taskEle.className === 'task-single') {
-            const task = taskEle.id;
-
-            console.log(task); // STEP ONE
-            if (document.getElementById('edit-task') !== null) {
-                console.log('HELLO');
-            }
-
             //Create the div form
             const editTaskDivHeader = document.createElement('div');
             editTaskDivHeader.setAttribute('id', 'edit-task-header')
@@ -199,18 +211,63 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 "Content-Type": "application/json"
                             }
                         }).then(res => res.json())
+                // if successful do here: 
+            const resListId = editTask.list_id;
+            const resTaskId = editTask.id; 
+            const resName = editTask.name;
+            if (resListId) {
+               window.location.href = `http://localhost:8080/home/list/${resListId}`
+            } else {
+                taskEle.innerText = resName
+            };
+
 
                 } catch (e) {
                     console.log(e);
                 }
             })
         }
+
+        if (e.target.className === 'c-checkbox') {
+
+            const unparsedTask = e.target.id;
+            const taskId = unparsedTask.split("c-").join("");
+            
+            const body = {
+                taskId,
+                completed: true,
+            }
+            await fetch('http://localhost:8080/api/tasks/completed', {
+                method: "PUT",
+                body: JSON.stringify(body),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            
+
+        }
     })
 
-    // const searchbar = document.getElementById('top-nav-search')
-    // searchbar.addEventListener('keydown', (e) => {
-    //     input
-    // })
+    // Anthony - Brian
+
+// What we have so far: 
+// - We have the checkbox come up on creation of task with a task id 
+// - We are able to redirect the user when editing a task + setting new list 
+// - We keep the user on the same page + update the task name if new list is not selected
+
+
+// What we need done:
+// - If the user selects the 'completed' checkbox, we should be able to make a fetch to the database to update the tasks 'completed' state.
+
+// - If the user reloads the page, the task should still be checked
+
+// Pseudo code 
+// - Figure out how to tell whether or not a check box has been selected 
+
+// - Associate that selected checkbox with it's task id 
+
 
 
 })

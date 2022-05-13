@@ -202,6 +202,7 @@
   border-left: solid #F2D777;
   top: 1px;
   background-color: white;
+  margin: 0; /* CHANGED BY ANTHONY */
 }
 
 .task-single:hover {
@@ -363,6 +364,22 @@
   padding: 7px 18px 7px 16px;
   font-size: 15px;
   cursor: pointer;
+}
+
+#completed-checkbox {
+  display: flex;
+  position: relative;
+  top: -32px;
+  background-color: transparent;
+  left: 13px;
+  padding: none;
+  margin: 0;
+}
+
+#c-checkbox {
+  display: inline;
+  padding: none;
+  margin: 0;
 }
 /* Anthony - Brian : This is the edit task Form CSS */
 

@@ -90,24 +90,25 @@ router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(asyn
 
 
 
-router.put('/tasks/edit-task', async (req, res) => {
+router.put('/tasks/edit-task', async(req, res) => {
   console.log("I Hit this")
   const user_id = req.session.auth.userId;
   // const url = req.headers.referer.split('/');
   // const pageId = url[url.length - 1]
-
   const { date_due, name, list_id, id } = req.body;
-  console.log({ date_due, name, list_id, id }, "<-------- THIS")
+
+  if (list_id !== 'no changes') {
+
   const list = await db.list.findOne({
     where: {
       user_id,
       name: list_id
     }
   });
-  console.log(list.id, "<--- LIST")
+  
   const newListId = list.id;
   const selectedTask = await db.task.findByPk(Number(id));
-  console.log(selectedTask.name, selectedTask.id, "<---- OUR TASK ")
+
 
   selectedTask.name = name;
   selectedTask.list_id = newListId;
@@ -117,9 +118,26 @@ router.put('/tasks/edit-task', async (req, res) => {
   await selectedTask.save()
 
 
-  console.log("SUCCESSFUL")
-  return res.json({ task });
+  
+  return res.json({ list_id: newListId.toString(), id});
+} else {
+  return res.json({list_id: '', id, name})
+}
 });
+
+
+// We want to be able to update the tasks 'completed' column in the database for said task id 
+
+
+router.put('/tasks/completed', async(req, res) => {
+  const {taskId, completed} = req.body;
+  const task = await db.task.findByPk(Number(taskId));
+  task.completed = completed;
+
+  await task.save();
+
+  res.json()
+})
 // Anthony - Brian
 
 // `/home/list/${pageId}/new-task` <--- former action
