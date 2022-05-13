@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // obtain the elements needed to interact
     // Anthony - Brian
+    const taskInfo = async() => {
+        const res = await fetch('http://localhost:8080/api/tasks')
+        const data = await res.json();
+        return data
+    }
+
     const submitButton = document.createElement('input');
     submitButton.setAttribute('type', 'submit');
     submitButton.setAttribute('id', 'edit-task-submit');
@@ -13,10 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     deleteTaskButton.setAttribute('type', 'submit')
 
 
-
     const listSummary = document.getElementById('list-summary');
-
-
 
 
     const createForm = (csrfToken, lists, editNameVal, taskId) => {
@@ -88,7 +91,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // [edit task] form submit button
 
-
         editTaskForm.appendChild(editName);
         editTaskForm.appendChild(csrfInput);
         editTaskForm.appendChild(dateDiv);
@@ -104,6 +106,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     const taskName = document.getElementById('new-task-input');
 
 
+    const taskData = await taskInfo();
+    const taskDataArr = taskData.theTask;
+    const checkBoxes = document.querySelectorAll('.c-checkbox')
+    
+    // Initialize array that will compare page task id with database id 
+        let cbIdArr = [];
+        checkBoxes.forEach(box => {
+            cbIdArr.push(Number(box.getAttribute('id').split("c-").join("")))
+        })
+
+        // Function to find all tasks on page
+        const allTasksOnPage = () => {
+            const onPage = [];
+            taskDataArr.forEach(task => {
+                if (cbIdArr.includes(task.id)) {
+                    onPage.push(task);
+                }
+            })
+            
+            return onPage
+        }
+
+        const onPageCompleted = allTasksOnPage()
+        
+
+        // Mark all current tasks on page as completed/not
+        onPageCompleted.forEach(task => {
+            if (task.completed) {
+                const completedEle = document.getElementById(`c-${task.id}`)
+                completedEle.checked = true
+            }
+        })
+
+        // Count all completed tasks on page
+        
+        const completedCount = () => {
+            let count = 0;
+            onPageCompleted.forEach(task => {
+                if (task.completed) {
+                    count++
+                }
+            })
+            return count;
+        }
+        
+    let completedCounter = completedCount();
+    const completedEle = document.getElementById('completed-count');
+    completedEle.innerText = completedCounter;
     // POST request -> create new task on click of 'new task' button
     // (front-end api)
     newTaskBtn.addEventListener('click', async (e) => {
@@ -133,6 +183,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             taskName.value = ''
 
             // IN PROGRESS CHECKBOX FUNCTIONALITY
+            
             if (taskElement.nextSibling === null) {
                 const checkboxForm = document.createElement('form');
                 checkboxForm.setAttribute('id', 'completed-checkbox')
@@ -224,7 +275,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         }).then(res => res.json())
                     // if successful do here:
                     const resListId = editTask.list_id;
-                    const resTaskId = editTask.id;
                     const resName = editTask.name;
                     if (resListId) {
                         window.location.href = `/home/list/${resListId}`
@@ -237,17 +287,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                     console.log(e);
                 }
             })
+
+
+
+            // Delete a task by calling custom api 
             deleteTaskButton.addEventListener('click', async (e) => {
                 e.stopPropagation();
                 e.preventDefault();
 
                 // get data from fetch request
                 const formData = document.getElementById('edit-task-form')
-                const date_due = document.getElementById('task-form-date').value;
-                const list_id = document.getElementById('task-form-select').value;
-                const name = document.getElementById('edit-name').value;
 
-                // const csrfTkn = document.getElementById('token').value;
+                
                 const id = formData.getAttribute('data-taskId')
                 const taskEle = document.getElementById(id)
                 const checkEle = document.getElementById(`c-${id}`)
@@ -278,24 +329,59 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (e.target.className === 'c-checkbox') {
 
             const unparsedTask = e.target.id;
-            const taskId = unparsedTask.split("c-").join("");
+            const taskId = Number(unparsedTask.split("c-").join(""));
+            const taskData = await taskInfo()
+            const taskDataArr = taskData.theTask;
+            
+
+            let completedStatus;
+            taskDataArr.forEach(task => {
+                if (task.id === taskId) {
+                    completedStatus = task.completed;
+                }
+            })
+
+            
+            if (completedStatus === true) {
+                completedCounter -= 1;
+
+                completedStatus = false
+
+                
+
+            } else if (completedStatus === false) {
+                completedCounter += 1;
+
+                completedStatus = true;
+
+                
+            }
+            
+            completedEle.innerText = completedCounter;
 
             const body = {
                 taskId,
-                completed: true,
+                completed: completedStatus,
             }
-            await fetch('/api/tasks/completed', {
+
+            const res = await fetch('/api/tasks/completed', {
                 method: "PUT",
                 body: JSON.stringify(body),
                 headers: {
                     "Content-Type": "application/json"
                 }
-            })
-
-
-
+            }).then(res => res.json());
+            
+            
         }
-    })
+    }) // <-- on click of task functionality
+    // (sidebar, delete, edit, completed task checkbox, and more)
+
+
+
+}) 
+
+
 
     // Anthony - Brian
 
@@ -317,4 +403,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-})
+

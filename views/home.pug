@@ -55,7 +55,7 @@ html
                             //- div(class="block-quote") |
                             p(class="task-single" id=`${task.id}`)= task.name
                                 form(id='completed-checkbox')
-                                    input(type='checkbox' class='c-checkbox' id=`c-${task.id}` data-completed='false')
+                                    input(type='checkbox' class='c-checkbox' id=`c-${task.id}` data-completed=`${task.completed}`)
                             div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary
