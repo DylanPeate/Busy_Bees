@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     submitButton.setAttribute('class', 'btn');
     // Edit task form creation function
 
+    // Added by Danny
+    const deleteTaskButton = document.createElement("p");
+    deleteTaskButton.innerHTML = '<button class="btn" id="delete-task-button">Delete</button>'
+    // deleteTaskButton.setAttribute("class", "btn");
+    // deleteTaskButton.setAttribute("id", "delete-task-button");
+
     const listSummary = document.getElementById('list-summary');
 
     const createForm = (csrfToken, lists, editNameVal, taskId) => {
@@ -84,6 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         editTaskForm.appendChild(dateDiv);
         editTaskForm.appendChild(newListDiv);
         editTaskForm.appendChild(submitButton);
+        editTaskForm.append(deleteTaskButton);
         return editTaskForm;
     }
 
@@ -92,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const taskContainer = document.querySelector('.tasks-container');
     const taskName = document.getElementById('new-task-input');
 
-    
+
     // POST request -> create new task on click of 'new task' button
     // (front-end api)
     newTaskBtn.addEventListener('click', async (e) => {
@@ -102,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         taskElement.innerText = taskName.value;
         taskElement.className = 'task-single'
         taskContainer.appendChild(taskElement);
-       
+
 
         const name = taskName.value;
         const body = { name };
@@ -121,7 +128,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             taskElement.setAttribute('id', res.task)
             taskName.value = ''
 
-             // IN PROGRESS CHECKBOX FUNCTIONALITY 
+             // IN PROGRESS CHECKBOX FUNCTIONALITY
             if (taskElement.nextSibling === null) {
                 const checkboxForm = document.createElement('form');
                 checkboxForm.setAttribute('id', 'completed-checkbox')
@@ -211,9 +218,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 "Content-Type": "application/json"
                             }
                         }).then(res => res.json())
-                // if successful do here: 
+                // if successful do here:
             const resListId = editTask.list_id;
-            const resTaskId = editTask.id; 
+            const resTaskId = editTask.id;
             const resName = editTask.name;
             if (resListId) {
                window.location.href = `http://localhost:8080/home/list/${resListId}`
@@ -232,7 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const unparsedTask = e.target.id;
             const taskId = unparsedTask.split("c-").join("");
-            
+
             const body = {
                 taskId,
                 completed: true,
@@ -245,16 +252,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             })
 
-            
+
 
         }
     })
 
     // Anthony - Brian
 
-// What we have so far: 
-// - We have the checkbox come up on creation of task with a task id 
-// - We are able to redirect the user when editing a task + setting new list 
+// What we have so far:
+// - We have the checkbox come up on creation of task with a task id
+// - We are able to redirect the user when editing a task + setting new list
 // - We keep the user on the same page + update the task name if new list is not selected
 
 
@@ -263,10 +270,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // - If the user reloads the page, the task should still be checked
 
-// Pseudo code 
-// - Figure out how to tell whether or not a check box has been selected 
+// Pseudo code
+// - Figure out how to tell whether or not a check box has been selected
 
-// - Associate that selected checkbox with it's task id 
+// - Associate that selected checkbox with it's task id
 
 
 
