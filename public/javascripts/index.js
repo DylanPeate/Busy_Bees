@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Added by Danny
     const deleteTaskButton = document.createElement("p");
     deleteTaskButton.innerHTML = '<button class="btn" id="delete-task-button">Delete</button>'
-    // deleteTaskButton.setAttribute("class", "btn");
-    // deleteTaskButton.setAttribute("id", "delete-task-button");
 
     const listSummary = document.getElementById('list-summary');
 
