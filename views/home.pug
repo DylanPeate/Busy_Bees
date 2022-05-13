@@ -59,7 +59,10 @@ html
                             div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary
-                    p(id="task-count")= tasks.length
-                    p(id="task-count-title")= "tasks"
+                div(id="counters-container")
+                    div(id="task-count-container")
+                        p(id="task-count" class="text")= tasks.length
+                        p(id="task-count-title" class="text")= "tasks"
                     //- p(id="completed-count")
-                    p(id="complete-count-title")= "complete"
+                    div(id="complete-count-container")
+                        p(id="complete-count-title" class="text")= "complete"
