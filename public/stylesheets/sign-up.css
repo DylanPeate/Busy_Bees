@@ -98,6 +98,7 @@
   padding: 7px 12px 7px;
   font-size: 15px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 #signup-button {

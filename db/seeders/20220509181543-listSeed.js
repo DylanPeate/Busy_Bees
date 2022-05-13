@@ -14,12 +14,30 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('lists', [{
-      name: 'adminList',
+      name: 'personal',
       completed: false,
       user_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    }])
+    }, {
+      name: 'work',
+      completed: false,
+      user_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      name: 'personal',
+      completed: false,
+      user_id: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      name: 'work',
+      completed: false,
+      user_id: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },])
   },
 
   down: (queryInterface, Sequelize) => {

@@ -17,5 +17,4 @@ const handleValidationErrors = (req, res, next) => {
 
 
 
-
-module.exports = { asyncHandler, handleValidationErrors }
+module.exports = { asyncHandler, handleValidationErrors}

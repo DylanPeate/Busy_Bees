@@ -8,29 +8,35 @@ html
       link(rel='stylesheet' href='/stylesheets/home.css')
       script(src='/javascripts/index.js')
       script(src="/javascripts/new-list.js")
+      script(src="/javascripts/search.js")
   body
     header
         div(id="top-nav")
-            input(type="search" id="top-nav-search")
+            input(type="text" id="top-nav-search")
             a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
-            div(id="left-nav-bar") LOGO
+            div(id="left-nav-bar")
+                //- a(href="/home")
+                //-     img(src="beeeeeeemovie.png" id="bee-icon")
+                div(id="logo-divider")
+                div(id="left-nav-header")
                 div(id="tasks-title" class="text nav-text") Tasks
                     a(type="button" id=`all-tasks` class="all-tasks-button" href=`/home`)= "All Tasks"
-                div(class="divider")
+                div(id="task-title-divider" class="divider")
                 div(id="lists-bar")
                     button(type="submit" id="new-list-btn" class="list-btn" href="/home/new-list") +
                     div(id="list-form-container" class="hidden")
                         form(method="POST" action="/home" id="new-list-form")
-                            input(type="text" id="listName" name="listName" placeholder="List Name", required)
-                        button(type="submit" id="create-list-btn") Create List
-                        a(type="button" id="cancel-btn" href="/home") Cancel
+                            input(type="text" id="listName" name="listName" placeholder="Add a list name...", required)
+                        div(id="add-list-buttons")
+                            button(type="submit" id="create-list-btn") Create List
+                            a(type="button" id="cancel-btn" href="/home") Cancel
                     div(id="lists-title" class="text nav-text") Lists
                         each list in lists
                             div(class="list-divider")
                             div(id="list-with-button")
                                 a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
-                                button(id="delete-list-btn" class="btn") -
+                                button(id="delete-list-btn" class="btn delete-btn") -
                             div(id="confirm-delete" class="hidden")
                                 p(class="confirm-list text") Delete List?
                                 div(id="confirm-yes-no-buttons")
@@ -43,10 +49,20 @@ html
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type="text" id="new-task-input" name="name" placeholder="Add a new task here...")
                         button(type="submit" id="new-task-btn") +
+                        button(type="button" id="sort-btn" class="btn") ⇅
                 div(class="tasks-container text")
                         each task in tasks
                             //- div(class="block-quote") |
-                            p(class="task-single")= task.name
+                            p(class="task-single" id=`${task.id}`)= task.name
+                                form(id='completed-checkbox')
+                                    input(type='checkbox' class='c-checkbox' id=`c-${task.id}` data-completed='false')
                             div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary
+                div(id="counters-container")
+                    div(id="task-count-container")
+                        p(id="task-count" class="text")= tasks.length
+                        p(id="task-count-title" class="text")= "tasks"
+                    div(id="complete-count-container")
+                        p(id="completed-count" class="text")= ""
+                        p(id="complete-count-title" class="text")= "complete"
