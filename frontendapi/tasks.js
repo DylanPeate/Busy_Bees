@@ -10,6 +10,16 @@ const { requireAuth } = require('../auth');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 
+router.get('/tasks', async(req, res) => {
+ const user_id = req.session.auth.userId;
+  const theTask = await task.findAll({
+    where: {
+      user_id
+    }
+  });
+    
+  return res.json({theTask})
+})
 
 // Anthony - Brian
 router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
@@ -33,7 +43,7 @@ router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
       });
     }
   }
-  console.log(newTask.id)
+
   return res.json({ task: `${newTask.id}` });
 }))
 
@@ -136,8 +146,10 @@ router.put('/tasks/completed', async(req, res) => {
 
   await task.save();
 
-  res.json()
+  res.json({completed: task.completed})
 })
+
+
 // Anthony - Brian
 
 // `/home/list/${pageId}/new-task` <--- former action

@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // obtain the elements needed to interact
     // Anthony - Brian
+    const taskInfo = async() => {
+        const res = await fetch('http://localhost:8080/api/tasks')
+        const data = await res.json();
+        return data
+    }
+
+
+
+
+    
     const submitButton = document.createElement('input');
     submitButton.setAttribute('type', 'submit');
     submitButton.setAttribute('id', 'edit-task-submit');
@@ -92,7 +102,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     const taskContainer = document.querySelector('.tasks-container');
     const taskName = document.getElementById('new-task-input');
 
+
+    const taskData = await taskInfo();
+    const taskDataArr = taskData.theTask;
+    const checkBoxes = document.querySelectorAll('.c-checkbox')
     
+        let cbIdArr = [];
+        checkBoxes.forEach(box => {
+            cbIdArr.push(Number(box.getAttribute('id').split("c-").join("")))
+        })
+
+        // Function to find all tasks on page
+        const allTasksOnPage = () => {
+            const onPage = [];
+            taskDataArr.forEach(task => {
+                if (cbIdArr.includes(task.id)) {
+                    onPage.push(task);
+                }
+            })
+            
+            return onPage
+        }
+
+        const onPageCompleted = allTasksOnPage()
+        
+
+        // Mark all current tasks on page as completed/not
+        onPageCompleted.forEach(task => {
+            if (task.completed) {
+                const completedEle = document.getElementById(`c-${task.id}`)
+                completedEle.checked = true
+            }
+        })
+
+        // Count all completed tasks on page 
+        const completedCount = () => {
+            let count = 0;
+            onPageCompleted.forEach(task => {
+                if (task.completed) {
+                    count++
+                }
+            })
+            return count;
+        }
+        completedCount();
+
     // POST request -> create new task on click of 'new task' button
     // (front-end api)
     newTaskBtn.addEventListener('click', async (e) => {
@@ -231,22 +285,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (e.target.className === 'c-checkbox') {
 
             const unparsedTask = e.target.id;
-            const taskId = unparsedTask.split("c-").join("");
+            const taskId = Number(unparsedTask.split("c-").join(""));
+            const taskData = await taskInfo()
+            const taskDataArr = taskData.theTask;
             
+
+            let completedStatus;
+            taskDataArr.forEach(task => {
+                if (task.id === taskId) {
+                    completedStatus = task.completed;
+                }
+            })
+
+            if (completedStatus === true) {
+                completedStatus = false
+            } else if (completedStatus === false) {
+                completedStatus = true;
+            }
+
+            
+
             const body = {
                 taskId,
-                completed: true,
+                completed: completedStatus,
             }
-            await fetch('http://localhost:8080/api/tasks/completed', {
+            const res = await fetch('http://localhost:8080/api/tasks/completed', {
                 method: "PUT",
                 body: JSON.stringify(body),
                 headers: {
                     "Content-Type": "application/json"
                 }
-            })
-
+            }).then(res => res.json());
             
-
         }
     })
 
