@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const submitButton = document.createElement('input');
     submitButton.setAttribute('type', 'submit');
     submitButton.setAttribute('id', 'edit-task-submit');
+    submitButton.setAttribute('class', 'btn');
     // Edit task form creation function
 
     const listSummary = document.getElementById('list-summary');
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         editName.setAttribute('type', 'text'); // [edit name] text box
         editName.setAttribute('name', 'edit-name-box');
         editName.setAttribute('id', 'edit-name');
+        editName.setAttribute('placeholder', 'Edit task name here...');
         editName.value = editNameVal;
 
         // change date input element
@@ -33,12 +35,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const dateLabel = document.createElement('label');
         dateLabel.setAttribute('id', 'date-label');
         dateLabel.setAttribute('for', 'date');
+        dateLabel.setAttribute('class', 'text')
         dateLabel.innerText = 'Due';
 
         const dateInput = document.createElement('input');
         dateInput.setAttribute('type', 'date');
         dateInput.setAttribute('name', 'date');
         dateInput.setAttribute('id', 'task-form-date');
+        dateInput.setAttribute('class', 'text');
 
         dateDiv.append(dateLabel);
         dateDiv.append(dateInput);
@@ -49,6 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         newListDiv.setAttribute('id', 'list-div'); // Choose new list
         const newListLabel = document.createElement('for', 'select-list')
         newListLabel.setAttribute('id', 'list-label')
+        newListLabel.setAttribute('class', 'text')
         newListLabel.innerText = 'List'
         const newListInput = document.createElement('select');
         newListInput.setAttribute('name', 'select-list')
@@ -143,7 +148,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             //Create the div form
             const editTaskDivHeader = document.createElement('div');
             editTaskDivHeader.setAttribute('id', 'edit-task-header')
-            editTaskDivHeader.innerText = 'Edit Task'
+            editTaskDivHeader.setAttribute('class', 'text')
+            editTaskDivHeader.innerText = 'EDIT TASK'
             const editTaskDiv = document.createElement('div');
             editTaskDiv.setAttribute('id', 'edit-task');
 
@@ -243,6 +249,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         }
     })
+
     // Anthony - Brian
 
 // What we have so far: 
@@ -261,29 +268,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // - Associate that selected checkbox with it's task id 
 
-// 
 
 
-
-
-    // const name = taskName.value;
-    // const body = { name };
-    // try {
-    //     // fetch request to our api
-    //     const res = await fetch('http://localhost:8080/api/tasks', {
-    //         method: "POST",
-    //         body: JSON.stringify(body),
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //     });
-    //     console.log('This shouldnt print')
-    //     taskName.value = ''
-    //     if (!res.ok) {
-    //         throw res;
-    //     }
-    // } catch (e) {
-    //     // TODO - throw a custom error
-    //     console.log(e)
-    // }
 })
