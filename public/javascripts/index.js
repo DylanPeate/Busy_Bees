@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // obtain the elements needed to interact
+    // Anthony - Brian 
 
+    
     const createForm = (csrfToken, lists, editNameVal, taskId) => {
-        console.log(lists)
-
         const editTaskForm = document.createElement('form');
-        editTaskForm.setAttribute('dataset-taskid', taskId)
+        editTaskForm.setAttribute('data-taskId', taskId)
         editTaskForm.setAttribute('id', 'edit-task-form');
 
 
-        const csrfInput = document.createElement('input');
-        csrfInput.setAttribute('type', 'hidden');
-        csrfInput.setAttribute('name', '_csrf');
-        csrfInput.setAttribute('value', csrfToken); // <--- csrfToken pass in 
+        // const csrfInput = document.createElement('input');
+        // csrfInput.setAttribute('id', 'token');
+        // csrfInput.setAttribute('type', 'hidden');
+        // csrfInput.setAttribute('name', '_csrf');
+        // csrfInput.setAttribute('value', csrfToken); // <--- csrfToken pass in 
 
         const editName = document.createElement('input');
         editName.setAttribute('type', 'text');
@@ -52,7 +53,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         // new List Select Dropdown 
 
         for (let i = 0; i < lists.length; i++) {
-            console.log(lists[i].name)
             const option = document.createElement('option');
             option.innerText = lists[i].name;
             option.setAttribute('value', lists[i].name)
@@ -64,11 +64,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         submitButton.setAttribute('id', 'edit-task-submit');
 
         editTaskForm.appendChild(editName);
-        editTaskForm.appendChild(csrfInput);
+        // editTaskForm.appendChild(csrfInput);
         editTaskForm.appendChild(dateDiv);
         editTaskForm.appendChild(newListDiv);
         editTaskForm.appendChild(submitButton);
 
+        console.log(submitButton);
         return editTaskForm;
     }
 
@@ -109,15 +110,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
         })  
 
-
-
-
-        let editTaskClicked = false;
+    
         // On click of task, open edit task menu 
     taskContainer.addEventListener('click', async(e) => {
         const taskEle = e.target;
         if (taskEle.className === 'task-single') {
-            editTaskClicked = true;
             const taskName = taskEle.innerText;
             const taskId =  Number(taskEle.getAttribute('id'));
             
@@ -139,53 +136,56 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const createdForm = createForm(csrfToken, lists, taskEle.innerText, taskEle.getAttribute('id'))
 
-        
             
             editTaskDiv.appendChild(editTaskDivHeader)
             editTaskDiv.appendChild(createdForm);
             listSummary.appendChild(editTaskDiv);
-        }
-    })
 
-    // edit-task-submit
+
+            const submitBtn = document.getElementById('edit-task-submit')
+            if (submitBtn) {
+            submitBtn.addEventListener('click', async(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const formData = document.getElementById('edit-task-form')
+            const date_due = document.getElementById('task-form-date').value;
+            const list_id = document.getElementById('task-form-select').value;
+            const name = document.getElementById('edit-name').value;
+            // const csrfTkn = document.getElementById('token').value;
+            const id = formData.getAttribute('data-taskId')
     
-    // task-form-date - DATE 
-    // select-list - LIST 
-    // edit-name-box - NAME 
-    console.log(editTaskClicked)
-    if (editTaskClicked === true) {
-    const submitEditTask = document.getElementById('id', 'edit-task-submit');
-    console.log(submitEditTask);
-    submitEditTask.addEventListener('click', async(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const newDate = document.getElementById('task-form-date');
-        const newList = document.getElementById('select-list');
-        const newName = document.getElementById('edit-name-box');
-        const formData = document.getElementById('edit-task-form');
-        const taskId = formData.dataset.taskId;
-        console.log(taskId);
-        const body = {
-            date: newDate.value,
-            list: newList.value,
-            name: newName.value,
-            taskId: taskId
-        }
-        try {
-            await fetch('http://localhost:8080/api/tasks/edit-task', {
-            method: "PUT",
-            body: JSON.stringify(body),
-            header: {
-                "Content-Type": "application/json"
-            }})
-        } catch (e) {
+            const body = {
+                date_due,
+                list_id,
+                name,
+                id,
+                 };
+
+            try {
+               const editTask = await fetch('http://localhost:8080/api/tasks/edit-task', {
+                method: "PUT",
+                body: JSON.stringify(body),
+                headers: {
+                    "Content-Type": "application/json"
+                }}).then(res => res.json())
+
+                console.log(editTask);
+
+            } catch (e) {
             console.log(e);
-        }
-            editTaskClicked = false; 
+            }
     })
-}
+
+            } 
+        }
+    })
+    // Anthony - Brian 
 
 
-});
 
 
+
+    
+    
+
+})

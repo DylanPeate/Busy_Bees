@@ -11,16 +11,7 @@ const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 
 
-
-// test route handler
-// router.get('/tasks', async (req, res) => {
-//   const allTasks = await tasks.findAll();
-
-//   res.json({ allTasks })
-// });
-
-
-// post route handler to submit task data sent from javascripts/index.js
+// Anthony - Brian 
 router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
   const user_id = req.session.auth.userId;
   const url = req.headers.referer.split('/');
@@ -46,7 +37,7 @@ router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
 }))
 
 
-router.get('/tasks/taskid', csrfProtection, asyncHandler(async(req, res) => {
+router.get('/tasks/taskid', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
   const user_id = req.session.auth.userId;
   const url = req.headers.referer.split('/');
   const listId = url[url.length - 1];
@@ -58,13 +49,31 @@ router.get('/tasks/taskid', csrfProtection, asyncHandler(async(req, res) => {
 
 
 
-router.put('/tasks/edit-task', csrfProtection, asyncHandler(async(req, res) => {
-    console.log(req.body);
-}))
+router.put('/tasks/edit-task', async(req, res) => {
+  const user_id = req.session.auth.userId;
 
+  const { date_due, list_id, name, id } = req.body;
 
-// `/home/list/${pageId}/new-task` <--- former action attribute in home page form for tasks
-// grab the length of the tasks +1
+  const list = await db.list.findOne({
+    where: {
+      user_id,
+      name: list_id
+    }
+  });
+  const newListId = list.id;
+  const task = await db.task.findByPk(Number(id));
+
+  task.name = name;
+  task.list_id = newListId;
+  task.date_due = date_due;
+
+  console.log(task, 'TASK')
+
+    return res.json({task});
+});
+// Anthony - Brian 
+
+// `/home/list/${pageId}/new-task` <--- former action 
 
 
 module.exports = router;
