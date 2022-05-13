@@ -11,21 +11,21 @@ const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 
 
-// Anthony - Brian 
+// Anthony - Brian
 router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
   const user_id = req.session.auth.userId;
   const url = req.headers.referer.split('/');
   const pageId = url[url.length - 1]
   const { name } = req.body;
-    let newTask;
+  let newTask;
 
   if (pageId === "home") {
-     newTask = await task.create({
+    newTask = await task.create({
       name,
       user_id,
     });
   } else {
-     newTask = await task.create({
+    newTask = await task.create({
       name,
       user_id,
       list_id: pageId
@@ -33,18 +33,20 @@ router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
   }
 
   console.log(newTask.id)
-  return res.json({task: `${newTask.id}`});
+  return res.json({ task: `${newTask.id}` });
 }))
 
 
-router.get('/tasks/taskid', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
+router.get('/tasks/taskid', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const user_id = req.session.auth.userId;
   const url = req.headers.referer.split('/');
   const listId = url[url.length - 1];
 
-  const lists = await db.list.findAll()
+  const lists = await db.list.findAll({
+    where: { user_id }
+  })
 
-  return res.json({lists, csrfToken: req.csrfToken() })
+  return res.json({ lists, csrfToken: req.csrfToken() })
 }))
 
 
@@ -87,31 +89,39 @@ router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(asyn
 
 
 
-router.put('/tasks/edit-task', async(req, res) => {
+router.put('/tasks/edit-task', async (req, res) => {
+  console.log("I Hit this")
   const user_id = req.session.auth.userId;
+  // const url = req.headers.referer.split('/');
+  // const pageId = url[url.length - 1]
 
-  const { date_due, list_id, name, id } = req.body;
-
+  const { date_due, name, list_id, id } = req.body;
+  console.log({ date_due, name, list_id, id }, "<-------- THIS")
   const list = await db.list.findOne({
     where: {
       user_id,
       name: list_id
     }
   });
+  console.log(list.id, "<--- LIST")
   const newListId = list.id;
-  const task = await db.task.findByPk(Number(id));
+  const selectedTask = await db.task.findByPk(Number(id));
+  console.log(selectedTask.name, selectedTask.id, "<---- OUR TASK ")
 
-  task.name = name;
-  task.list_id = newListId;
-  task.date_due = date_due;
+  selectedTask.name = name;
+  selectedTask.list_id = newListId;
+  if (date_due) {
+    selectedTask.date_due = date_due;
+  }
+  await selectedTask.save()
 
 
-    console.log("SUCCESSFUL")
-    return res.json({task});
+  console.log("SUCCESSFUL")
+  return res.json({ task });
 });
-// Anthony - Brian 
+// Anthony - Brian
 
-// `/home/list/${pageId}/new-task` <--- former action 
+// `/home/list/${pageId}/new-task` <--- former action
 
 
 module.exports = router;
