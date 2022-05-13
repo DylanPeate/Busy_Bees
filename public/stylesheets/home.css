@@ -311,6 +311,18 @@
 #edit-task-submit {
   width: 10%;
 }
+
+#completed-checkbox {
+  display: flex;
+  position: relative;
+  top: -32px;
+  background-color: transparent;
+  left: 13px;
+}
+
+#c-checkbox {
+  display: inline;
+}
 /* Anthony - Brian : This is the edit task Form CSS */
 
 

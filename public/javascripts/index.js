@@ -54,6 +54,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         newListInput.setAttribute('name', 'select-list')
         newListInput.setAttribute('id', 'task-form-select')
 
+        const noneOption = document.createElement('option');
+        noneOption.setAttribute('value', 'no changes')
+        noneOption.innerText = 'No Changes';
+
+        newListInput.appendChild(noneOption);
         newListDiv.appendChild(newListLabel);
         newListDiv.appendChild(newListInput);
 
@@ -92,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         taskElement.innerText = taskName.value;
         taskElement.className = 'task-single'
         taskContainer.appendChild(taskElement);
-
+       
 
         const name = taskName.value;
         const body = { name };
@@ -111,6 +116,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             taskElement.setAttribute('id', res.task)
             taskName.value = ''
+
+
+            if (taskElement.nextSibling === null) {
+                const checkboxForm = document.createElement('form');
+                checkboxForm.setAttribute('id', 'completed-checkbox')
+
+                const checkbox = document.createElement('input');
+                checkbox.setAttribute('type', 'checkbox')
+                checkbox.setAttribute('id', `c-${res.task}`)
+                checkbox.setAttribute('class', 'c-checkbox')
+                checkboxForm.appendChild(checkbox);
+
+                taskContainer.appendChild(checkboxForm);
+
+
+
+                // event listener ()
+            }
+
         } catch (e) {
             console.log(e)
         }
@@ -121,12 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     taskContainer.addEventListener('click', async (e) => {
         const taskEle = e.target;
         if (taskEle.className === 'task-single') {
-            const task = taskEle.id;
-
-            console.log(task); // STEP ONE
-            if (document.getElementById('edit-task') !== null) {
-                console.log('HELLO');
-            }
+            
 
             //Create the div form
             const editTaskDivHeader = document.createElement('div');
@@ -193,6 +212,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 "Content-Type": "application/json"
                             }
                         }).then(res => res.json())
+                // if successful do here: 
+            const resListId = editTask.list_id;
+            const resTaskId = editTask.id; 
+            const resName = editTask.name;
+            if (resListId) {
+               window.location.href = `http://localhost:8080/home/list/${resListId}`
+            } else {
+                taskEle.innerText = resName
+            };
+
 
                 } catch (e) {
                     console.log(e);
@@ -202,8 +231,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
     // Anthony - Brian
 
+ //window.location.reload()
+
+ // on edit of new task we should reload page to new path if list was changed
 
 
+ // if we don't change the list, but change the name, the name should update immediately (inner text of ele)
+
+
+// knowing the list id will be useful 
+// knowing the task id will be useful 
 
     // const name = taskName.value;
     // const body = { name };
