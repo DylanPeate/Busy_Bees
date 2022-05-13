@@ -88,19 +88,16 @@ router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(asyn
 }))
 
 //delete task
-router.delete('/task/:id', requireAuth, asyncHandler(async (req, res) => {
+router.delete('/tasks/delete-task', requireAuth, asyncHandler(async (req, res) => {
   const user_id = req.session.auth.userId;
-  const task_id = parseInt(req.params.id, 10);
-  const tasks = await db.task.findAll({
-    where: { user_id }
-  })
-  await db.task.destroy({
+  const { id } = req.body
+  const deletedTask = await db.task.destroy({
     where: {
-      id: task_id,
+      id,
       user_id
     }
   })
-  res.redirect('/home')
+  return res.json({ deletedTask })
 }))
 
 
