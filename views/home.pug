@@ -49,6 +49,7 @@ html
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type="text" id="new-task-input" name="name" placeholder="Add a new task here...")
                         button(type="submit" id="new-task-btn") +
+                        button(type="submit" id="sort-btn" class="btn") ⇅
                 div(class="tasks-container text")
                         each task in tasks
                             //- div(class="block-quote") |

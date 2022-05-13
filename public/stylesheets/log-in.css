@@ -14,15 +14,15 @@
   }
 
   #right-panel-log {
-    display: flex;
-    flex-direction: column;
+    top: 385px;
     flex-wrap: nowrap;
     align-items: flex-start;
-    background-color: #fcf9ee;
+    background-color: transparent;
     width: 50%;
     max-height: 100%;
     float: right;
     position: relative;
+    min-width: 205px;
   }
 
   .btn-log {
@@ -34,26 +34,32 @@
   }
 
   #sign-up-button {
-    margin: 43px 0 0 450px;
-    flex-wrap: wrap;
-    color: #FCF9EE;
-    background-color: #646054;
-    border-radius: 3px;
-    padding: 7px 12px 7px;
-    font-size: 15px;
-    cursor: pointer;
+    position: relative;
+  left: 420px;
+  top: -226px;
+  flex-wrap: wrap;
+  ;
+  color: #FCF9EE;
+  background-color: #646054;
+  border-radius: 3px;
+  padding: 7px 12px 7px;
+  font-size: 15px;
+  cursor: pointer;
+  white-space: nowrap;
   }
 
   #form-text-log {
-    /* position: relative;
-    flex-wrap: nowrap; */
-    margin: 20px 0px 28px 86px;
+    position: relative;
+    top: -29px;
+    left: -49px;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 21px;
     color: #4A401C;
     font-weight: 550;
     line-height: 1.1;
     margin-top: 35%;
+    background: transparent;
+    white-space: nowrap;
   }
 
   #login-form {
