@@ -371,6 +371,7 @@
   top: 248px;
   width: 175px;
   height: 80px;
+  z-index: 10;
   box-shadow: 0 0 4px #646054;
   background-color: #FFD129;
   flex-direction: column;
@@ -430,6 +431,7 @@
   text-align: center;
   font-size: 17px;
   box-shadow: 0 0 4px #646054;
+  z-index: 9;
   left: 10px;
   top: 248px;
   width: 175px;
