@@ -49,6 +49,7 @@
 }
 
 #footer-div {
+    display: none;
     height: 323px;
     width: 100%;
     background-color: #FCF9EE;
