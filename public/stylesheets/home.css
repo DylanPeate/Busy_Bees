@@ -235,7 +235,7 @@
 
 #edit-task {
   animation-duration: 1s;
-  animation-name: slidein;
+  animation-name: slidein
 }
 
 @keyframes slidein {
@@ -247,6 +247,7 @@
     margin-left: -1%;
   }
 }
+
 
 #edit-task-header {
   text-align: center;

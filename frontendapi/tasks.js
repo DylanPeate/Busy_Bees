@@ -67,8 +67,8 @@ router.put('/tasks/edit-task', async(req, res) => {
   task.list_id = newListId;
   task.date_due = date_due;
 
-  console.log(task, 'TASK')
 
+    console.log("SUCCESSFUL")
     return res.json({task});
 });
 // Anthony - Brian 
