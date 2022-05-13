@@ -75,7 +75,22 @@ router.get('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (
     res.redirect('/home')
 }))
 
+//search
+router.get('/search', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+    const user_id = req.session.auth.userId;
+    const lists = await db.list.findAll({
+        where: { user_id: req.session.auth.userId }
+    })
+    const tasks = await db.task.findAll({
+        where: { user_id }
+    })
+    const { searchInput } = req.body;
+    console.log(searchInput)
 
+
+
+    res.render('home', { lists, tasks, csrfToken: req.csrfToken() })
+}))
 
 
 

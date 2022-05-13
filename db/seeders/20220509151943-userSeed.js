@@ -21,6 +21,15 @@ module.exports = {
       //testpass
       createdAt: new Date(),
       updatedAt: new Date()
+    }, {
+      firstName: 'Demo',
+      lastName: 'User',
+      username: 'Demo',
+      email: 'demo@email.com',
+      hashed_password: '$2a$12$99MWKOkQ7o.M96zwguvAUuOSWWKiIdG/Uyw0.wKQwOONKf2pjly5K',
+      //demopassword
+      createdAt: new Date(),
+      updatedAt: new Date()
     }])
   },
 

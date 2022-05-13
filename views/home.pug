@@ -8,10 +8,11 @@ html
       link(rel='stylesheet' href='/stylesheets/home.css')
       script(src='/javascripts/index.js')
       script(src="/javascripts/new-list.js")
+      script(src="/javascripts/search.js")
   body
     header
         div(id="top-nav")
-            input(type="search" id="top-nav-search")
+            input(type="text" id="top-nav-search")
             a(type="button" id="logout-button" class="btn" href="/users/logout") Log Out
         div(id="body")
             div(id="left-nav-bar")
@@ -55,6 +56,3 @@ html
                             div(class="tasks-divider")
             div(id="list-summary")
                 h3(id="list-summary-title" class="list-summary-text text") List Summary
-                            
-
-

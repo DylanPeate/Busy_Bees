@@ -206,29 +206,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             })
         }
     })
-    // Anthony - Brian
+
+    // const searchbar = document.getElementById('top-nav-search')
+    // searchbar.addEventListener('keydown', (e) => {
+    //     input
+    // })
 
 
-
-
-    // const name = taskName.value;
-    // const body = { name };
-    // try {
-    //     // fetch request to our api
-    //     const res = await fetch('http://localhost:8080/api/tasks', {
-    //         method: "POST",
-    //         body: JSON.stringify(body),
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //     });
-    //     console.log('This shouldnt print')
-    //     taskName.value = ''
-    //     if (!res.ok) {
-    //         throw res;
-    //     }
-    // } catch (e) {
-    //     // TODO - throw a custom error
-    //     console.log(e)
-    // }
 })
