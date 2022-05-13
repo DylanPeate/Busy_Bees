@@ -149,7 +149,7 @@
 #new-task-input {
   position: relative;
   height: 27px;
-  width: 85%;
+  width: 75%;
   color: #646054;
   font-family: sans-serif;
   border-radius: 8px;
@@ -159,9 +159,9 @@
 #new-task-btn {
   position: relative;
   background-color: #FFD129;
-  left: 8px;
   color: #646054;
   width: 28px;
+  left: 7px;
   height: 28px;
   font-family: sans-serif;
   font-weight: bold;
@@ -575,6 +575,22 @@
   font-size: 10px;
   font-weight: bold;
   border: none;
+  cursor: pointer;
+}
+
+#sort-btn {
+  position: relative;
+  background-color: #FFD129;
+  left: 16px;
+  color: #646054;
+  width: 28px;
+  height: 28px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 
