@@ -1,43 +1,53 @@
 const express = require('express');
 const router = express.Router();
+
+
+
 const { asyncHandler } = require('../utils')
 const db = require('../db/models');
+const { task } = db;
 const { requireAuth } = require('../auth');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
-const { task } = db;
 
 
-// test route handler
-router.get('/tasks', async (req, res) => {
-  const allTasks = await tasks.findAll();
-
-  res.json({ allTasks })
-});
-
-
-// post route handler to submit task data sent from javascripts/index.js
+// Anthony - Brian
 router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
   const user_id = req.session.auth.userId;
   const url = req.headers.referer.split('/');
   const pageId = url[url.length - 1]
   const { name } = req.body;
+  let newTask;
 
-  if (pageId === "home") {
-    const newTask = await task.create({
-      name,
-      user_id
-    });
-  } else {
-    const newTask = await task.create({
-      name,
-      user_id,
-      list_id: pageId
-    });
+  if (name.length >= 1) {
+    if (pageId === "home") {
+      newTask = await task.create({
+        name,
+        user_id,
+      });
+    } else {
+      newTask = await task.create({
+        name,
+        user_id,
+        list_id: pageId
+      });
+    }
   }
+  console.log(newTask.id)
+  return res.json({ task: `${newTask.id}` });
+}))
 
 
-  return res.json({ name });
+router.get('/tasks/taskid', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const user_id = req.session.auth.userId;
+  const url = req.headers.referer.split('/');
+  const listId = url[url.length - 1];
+
+  const lists = await db.list.findAll({
+    where: { user_id }
+  })
+
+  return res.json({ lists, csrfToken: req.csrfToken() })
 }))
 
 
@@ -80,11 +90,39 @@ router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(asyn
 
 
 
-module.exports = router;
+router.put('/tasks/edit-task', async (req, res) => {
+  console.log("I Hit this")
+  const user_id = req.session.auth.userId;
+  // const url = req.headers.referer.split('/');
+  // const pageId = url[url.length - 1]
+
+  const { date_due, name, list_id, id } = req.body;
+  console.log({ date_due, name, list_id, id }, "<-------- THIS")
+  const list = await db.list.findOne({
+    where: {
+      user_id,
+      name: list_id
+    }
+  });
+  console.log(list.id, "<--- LIST")
+  const newListId = list.id;
+  const selectedTask = await db.task.findByPk(Number(id));
+  console.log(selectedTask.name, selectedTask.id, "<---- OUR TASK ")
+
+  selectedTask.name = name;
+  selectedTask.list_id = newListId;
+  if (date_due) {
+    selectedTask.date_due = date_due;
+  }
+  await selectedTask.save()
 
 
-// `/home/list/${pageId}/new-task` <--- former action attribute in home page form for tasks
+  console.log("SUCCESSFUL")
+  return res.json({ task });
+});
+// Anthony - Brian
 
+// `/home/list/${pageId}/new-task` <--- former action
 
 
 module.exports = router;
