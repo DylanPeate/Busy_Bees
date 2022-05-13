@@ -90,7 +90,7 @@ router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(asyn
 
 
 
-router.put('/tasks/edit-task', async (req, res) => {
+router.put('/tasks/edit-task', async(req, res) => {
   console.log("I Hit this")
   const user_id = req.session.auth.userId;
   // const url = req.headers.referer.split('/');
@@ -124,6 +124,20 @@ router.put('/tasks/edit-task', async (req, res) => {
   return res.json({list_id: '', id, name})
 }
 });
+
+
+// We want to be able to update the tasks 'completed' column in the database for said task id 
+
+
+router.put('/tasks/completed', async(req, res) => {
+  const {taskId, completed} = req.body;
+  const task = await db.task.findByPk(Number(taskId));
+  task.completed = completed;
+
+  await task.save();
+
+  res.json()
+})
 // Anthony - Brian
 
 // `/home/list/${pageId}/new-task` <--- former action
