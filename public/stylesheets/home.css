@@ -71,6 +71,26 @@
   background-color: #fcf9ee;
 }
 
+
+#tasks-title {
+  display: flex;
+  position: relative;
+  top: 10px;
+  flex-direction: column;
+}
+
+#all-tasks {
+  color: #6f5f4e9c;
+  text-decoration: none;
+  line-height: 4;
+}
+
+#task-title-divider {
+  display: flex;
+  position: relative;
+  top: 10px;
+}
+
 .divider {
   margin: 6px 0 -35px 0;
   background-color: #efe3b6;
@@ -90,8 +110,10 @@
 }
 
 .tasks-container {
+  background-color: white;
   overflow: auto;
   height: 830px;
+  width: 100%;
 }
 
 .tasks-container::-webkit-scrollbar {
@@ -171,11 +193,6 @@
   border-color: #f1eeea;
   width: 100%;
 }
-
-/* .block-quote {
-  background-color: transparent;
-  border-left: solid red;
-} */
 
 .task-single {
   font-size: 15px;
@@ -300,7 +317,7 @@
 #list-summary-title {
   position: relative;
   background-color: #f2d777;
-  top: 8px;
+  top: 20px;
   right: -8px;
   width: 150px;
   font-weight: 550;
@@ -315,15 +332,17 @@
 }
 
 .new-list {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    line-height: 4;
-    font-size: 12px;
-    margin-top: 40px;
-    margin-bottom: -5px;
-    color: #6f5f4e9c;
-    font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  line-height: 4;
+  font-size: 12px;
+  width: fit-content;
+  margin-top: 40px;
+  margin-bottom: -5px;
+  color: #6f5f4e9c;
+  background-color: transparent;
+  font-weight: bold;
 }
 
 #new-list-btn {
@@ -340,5 +359,184 @@
   border: 0px;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#list-form-container {
+  position: absolute;
+  top: 248px;
+  width: 175px;
+  height: 80px;
+  box-shadow: 0 0 4px #646054;
+  background-color: #FFD129;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  border-radius: 7px;
+}
+
+#listName {
+  position: relative;
+  font-family: sans-serif;
+  border-color: #F2D777;
+  text-align-last: center;
+  border-radius: 8px;
+  padding: 3px 0;
+  top: 12px;
+  top: 13px;
+  left: 16px;
+  width: 80%;
+}
+
+#cancel-btn {
+  place-self: center;
+  color: #fcf9ee;
+  white-space: nowrap;
+  align-self: center;
+  font-family: sans-serif;
+  background-color: #646054;
+  border-radius: 3px;
+  padding: 6px 20px;
+  margin-right: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#delete-list-btn {
+  position: relative;
+  top: 54px;
+  left: 18px;
+  background-color: #FFD129;
+  color: #646054;
+  width: 20px;
+  height: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#confirm-delete {
+  position: absolute;
+  text-align: center;
+  font-size: 17px;
+  box-shadow: 0 0 4px #646054;
+  left: 10px;
+  top: 248px;
+  width: 175px;
+  height: 80px;
+  background-color: #FFD129;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 7px;
+  align-content: stretch;
+  justify-content: space-evenly;
+}
+
+.confirm-list {
+  background-color: transparent;
+  color: #ff4d4dc9;
+  position: relative;
+  font-size: 16px;
+  top: 9px;
+}
+
+#confirm-yes-no-buttons {
+  background-color: transparent;
+  display: inline-flex;
+  position: relative;
+  top: 21px;
+  left: -13px;
+}
+
+.yes-button {
+  position: relative;
+  margin: 0px 32px;
+  color: #0eca16;
+  background-color: #FFD129;
+  width: 20px;
+  height: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#list-with-button {
+  display: flex;
+}
+
+#no-confirm-btn {
+  position: relative;
+  margin: 0px 15px;
+  background-color: #FFD129;
+  color: #ffffff;
+  width: 20px;
+  height: 18px;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#add-list-buttons {
+  display: flex;
+  background-color: transparent;
+  flex-direction: row;
+  position: relative;
+  top: 21px;
+  left: 3px;
+  justify-content: space-around;
+}
+
+#new-list-form {
+  background-color: transparent;
+}
+
+#create-list-btn {
+  color: #fcf9ee;
+  white-space: nowrap;
+  align-self: center;
+  background-color: #646054;
+  border-radius: 3px;
+  padding: 6px 10px;
+  margin-right: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+#logo-divider {
+  position: relative;
+  top: 10px;
+  margin: 6px 0 -36px 0;
+  background-color: #efe3b6;
+  width: 100%;
+  height: 0px;
+}
+
+#bee-icon {
+  position: relative;
+  width: 175px;
+  height: 175px;
+  left: 3px;
+  top: 10px;
   cursor: pointer;
 }

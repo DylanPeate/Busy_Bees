@@ -62,10 +62,12 @@
     border-radius: 3px;
     border: solid;
     padding: 7px 12px 7px;
+    position: relative;
+    left: 10px;
     cursor: pointer;
 }
 
-.whats-new-btn {
+.github-btn {
     background-color: transparent;
     border-radius: 3px;
     padding: 7px 12px 7px;

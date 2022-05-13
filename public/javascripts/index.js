@@ -82,14 +82,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const taskContainer = document.querySelector('.tasks-container');
     const taskName = document.getElementById('new-task-input');
 
+
     // POST request -> create new task on click of 'new task' button
     // (front-end api)
     newTaskBtn.addEventListener('click', async (e) => {
         e.preventDefault();
+
         const taskElement = document.createElement('p');
         taskElement.innerText = taskName.value;
         taskElement.className = 'task-single'
         taskContainer.appendChild(taskElement);
+
 
         const name = taskName.value;
         const body = { name };
@@ -201,4 +204,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
+
+        const name = taskName.value;
+        const body = { name };
+        try {
+            // fetch request to our api
+            const res = await fetch('http://localhost:8080/api/tasks', {
+                method: "POST",
+                body: JSON.stringify(body),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+            taskName.value = ''
+            if (!res.ok) {
+                throw res;
+            }
+        } catch (e) {
+            // TODO - throw a custom error
+            console.log(e)
+        }
+    })
 })

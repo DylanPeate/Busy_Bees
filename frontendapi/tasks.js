@@ -48,6 +48,44 @@ router.get('/tasks/taskid', requireAuth, csrfProtection, asyncHandler(async(req,
 }))
 
 
+//lists
+
+router.post('/new-list', requireAuth, asyncHandler(async (req, res) => {
+  const user_id = req.session.auth.userId;
+  const { name } = req.body;
+  let createdTask;
+
+  createdTask = await db.list.create({ name, user_id })
+
+  return res.json({ createdTask })
+}))
+
+//delete list
+
+router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+  const pageId = parseInt(req.params.id, 10);
+  const user_id = req.session.auth.userId;
+  const tasks = await db.task.findAll({
+    where: { user_id }
+  })
+  const deletedList = await db.list.findOne({
+    where: {
+      id: pageId
+    }
+  })
+  await db.task.destroy({
+    where: {
+      list_id: pageId,
+      user_id
+    }
+  })
+  await deletedList.destroy();
+
+  res.redirect('/home')
+}))
+
+
+
 
 router.put('/tasks/edit-task', async(req, res) => {
   const user_id = req.session.auth.userId;
