@@ -111,7 +111,8 @@
 
 .tasks-container {
   background-color: white;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 830px;
   width: 100%;
 }
@@ -202,20 +203,22 @@
   border-left: solid #F2D777;
   top: 1px;
   background-color: white;
+  padding-right: 10px;
   margin: 0; /* CHANGED BY ANTHONY */
 }
 
 .task-single:hover {
   font-size: 15px;
+  color: #646054;
   position: relative;
   line-height: 3.5;
   padding-left: 33px;
   border-left: solid #F2D777;
   top: 1px;
   background-color: white;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px #64605477;
 }
 
 
@@ -319,6 +322,7 @@
   text-align: center;
   height: 23px;
   background: white;
+  color: #646054;
 }
 
 #task-form-select {
@@ -328,6 +332,7 @@
   text-align: center;
   background: white;
   border: 2px solid #646054a3;
+  color: #646054;
 }
 
 #list-label {
@@ -626,5 +631,18 @@
   height: 175px;
   left: 3px;
   top: 10px;
+  cursor: pointer;
+}
+
+#delete-task-button {
+  position: relative;
+  left: 90px;
+  color: #4A401C;
+  white-space: nowrap;
+  align-self: center;
+  background-color: #FFD129;
+  border-radius: 3px;
+  padding: 7px 18px 7px 16px;
+  font-size: 15px;
   cursor: pointer;
 }
