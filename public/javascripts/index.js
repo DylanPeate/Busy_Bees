@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
             taskElement.setAttribute('id', res.task)
-
+            taskName.value = ''
         } catch (e) {
             console.log(e)
         }
@@ -205,23 +205,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-    const name = taskName.value;
-    const body = { name };
-    try {
-        // fetch request to our api
-        const res = await fetch('http://localhost:8080/api/tasks', {
-            method: "POST",
-            body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json"
-            },
-        });
-        taskName.value = ''
-        if (!res.ok) {
-            throw res;
-        }
-    } catch (e) {
-        // TODO - throw a custom error
-        console.log(e)
-    }
+    // const name = taskName.value;
+    // const body = { name };
+    // try {
+    //     // fetch request to our api
+    //     const res = await fetch('http://localhost:8080/api/tasks', {
+    //         method: "POST",
+    //         body: JSON.stringify(body),
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //     });
+    //     console.log('This shouldnt print')
+    //     taskName.value = ''
+    //     if (!res.ok) {
+    //         throw res;
+    //     }
+    // } catch (e) {
+    //     // TODO - throw a custom error
+    //     console.log(e)
+    // }
 })

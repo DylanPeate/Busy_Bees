@@ -19,19 +19,20 @@ router.post('/tasks', requireAuth, asyncHandler(async (req, res) => {
   const { name } = req.body;
   let newTask;
 
-  if (pageId === "home") {
-    newTask = await task.create({
-      name,
-      user_id,
-    });
-  } else {
-    newTask = await task.create({
-      name,
-      user_id,
-      list_id: pageId
-    });
+  if (name.length >= 1) {
+    if (pageId === "home") {
+      newTask = await task.create({
+        name,
+        user_id,
+      });
+    } else {
+      newTask = await task.create({
+        name,
+        user_id,
+        list_id: pageId
+      });
+    }
   }
-
   console.log(newTask.id)
   return res.json({ task: `${newTask.id}` });
 }))
