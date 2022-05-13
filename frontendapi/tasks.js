@@ -97,10 +97,21 @@ router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(asyn
   res.redirect('/home')
 }))
 
+//delete task
+router.delete('/tasks/delete-task', requireAuth, asyncHandler(async (req, res) => {
+  const user_id = req.session.auth.userId;
+  const { id } = req.body
+  const deletedTask = await db.task.destroy({
+    where: {
+      id,
+      user_id
+    }
+  })
+  return res.json({ deletedTask })
+}))
 
 
-
-router.put('/tasks/edit-task', async(req, res) => {
+router.put('/tasks/edit-task', async (req, res) => {
   console.log("I Hit this")
   const user_id = req.session.auth.userId;
   // const url = req.headers.referer.split('/');
@@ -109,38 +120,38 @@ router.put('/tasks/edit-task', async(req, res) => {
 
   if (list_id !== 'no changes') {
 
-  const list = await db.list.findOne({
-    where: {
-      user_id,
-      name: list_id
+    const list = await db.list.findOne({
+      where: {
+        user_id,
+        name: list_id
+      }
+    });
+
+    const newListId = list.id;
+    const selectedTask = await db.task.findByPk(Number(id));
+
+
+    selectedTask.name = name;
+    selectedTask.list_id = newListId;
+    if (date_due) {
+      selectedTask.date_due = date_due;
     }
-  });
-  
-  const newListId = list.id;
-  const selectedTask = await db.task.findByPk(Number(id));
+    await selectedTask.save()
 
 
-  selectedTask.name = name;
-  selectedTask.list_id = newListId;
-  if (date_due) {
-    selectedTask.date_due = date_due;
+
+    return res.json({ list_id: newListId.toString(), id });
+  } else {
+    return res.json({ list_id: '', id, name })
   }
-  await selectedTask.save()
-
-
-  
-  return res.json({ list_id: newListId.toString(), id});
-} else {
-  return res.json({list_id: '', id, name})
-}
 });
 
 
-// We want to be able to update the tasks 'completed' column in the database for said task id 
+// We want to be able to update the tasks 'completed' column in the database for said task id
 
 
-router.put('/tasks/completed', async(req, res) => {
-  const {taskId, completed} = req.body;
+router.put('/tasks/completed', async (req, res) => {
+  const { taskId, completed } = req.body;
   const task = await db.task.findByPk(Number(taskId));
   task.completed = completed;
 

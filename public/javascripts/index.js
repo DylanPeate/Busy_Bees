@@ -17,7 +17,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     submitButton.setAttribute('class', 'btn');
     // Edit task form creation function
 
+    // Added by Danny
+    const deleteTaskButton = document.createElement("p");
+    deleteTaskButton.innerHTML = '<button class="btn" id="delete-task-button">Delete</button>'
+    deleteTaskButton.setAttribute('type', 'submit')
+
+
+
     const listSummary = document.getElementById('list-summary');
+
+
+
 
     const createForm = (csrfToken, lists, editNameVal, taskId) => {
         const editTaskForm = document.createElement('form');
@@ -94,6 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         editTaskForm.appendChild(dateDiv);
         editTaskForm.appendChild(newListDiv);
         editTaskForm.appendChild(submitButton);
+        editTaskForm.append(deleteTaskButton);
         return editTaskForm;
     }
 
@@ -156,7 +167,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         taskElement.innerText = taskName.value;
         taskElement.className = 'task-single'
         taskContainer.appendChild(taskElement);
-       
+
 
         const name = taskName.value;
         const body = { name };
@@ -175,7 +186,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             taskElement.setAttribute('id', res.task)
             taskName.value = ''
 
-             // IN PROGRESS CHECKBOX FUNCTIONALITY 
+            // IN PROGRESS CHECKBOX FUNCTIONALITY
             if (taskElement.nextSibling === null) {
                 const checkboxForm = document.createElement('form');
                 checkboxForm.setAttribute('id', 'completed-checkbox')
@@ -265,26 +276,63 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 "Content-Type": "application/json"
                             }
                         }).then(res => res.json())
-                // if successful do here: 
-            const resListId = editTask.list_id;
-            const resTaskId = editTask.id; 
-            const resName = editTask.name;
-            if (resListId) {
-               window.location.href = `http://localhost:8080/home/list/${resListId}`
-            } else {
-                taskEle.innerText = resName
-            };
+                    // if successful do here:
+                    const resListId = editTask.list_id;
+                    const resTaskId = editTask.id;
+                    const resName = editTask.name;
+                    if (resListId) {
+                        window.location.href = `http://localhost:8080/home/list/${resListId}`
+                    } else {
+                        taskEle.innerText = resName
+                    };
 
 
                 } catch (e) {
                     console.log(e);
                 }
             })
+            deleteTaskButton.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+
+                // get data from fetch request
+                const formData = document.getElementById('edit-task-form')
+                const date_due = document.getElementById('task-form-date').value;
+                const list_id = document.getElementById('task-form-select').value;
+                const name = document.getElementById('edit-name').value;
+
+                // const csrfTkn = document.getElementById('token').value;
+                const id = formData.getAttribute('data-taskId')
+                const taskEle = document.getElementById(id)
+                const checkEle = document.getElementById(`c-${id}`)
+                const body = {
+                    id
+                };
+                try {
+                    const deleteTask = await fetch('http://localhost:8080/api/tasks/delete-task',
+                        {
+                            method: "DELETE",
+                            body: JSON.stringify(body),
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        }).then(res => res.json())
+                    taskEle.remove()
+                    checkEle.remove()
+
+                } catch (error) {
+                    console.log(error, "<-- ERROR");
+                }
+
+
+            })
+
         }
 
         if (e.target.className === 'c-checkbox') {
 
             const unparsedTask = e.target.id;
+<<<<<<< HEAD
             const taskId = Number(unparsedTask.split("c-").join(""));
             const taskData = await taskInfo()
             const taskDataArr = taskData.theTask;
@@ -304,6 +352,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             
+=======
+            const taskId = unparsedTask.split("c-").join("");
+>>>>>>> origin/main
 
             const body = {
                 taskId,
@@ -315,28 +366,35 @@ document.addEventListener('DOMContentLoaded', async () => {
                 headers: {
                     "Content-Type": "application/json"
                 }
+<<<<<<< HEAD
             }).then(res => res.json());
             
+=======
+            })
+
+
+
+>>>>>>> origin/main
         }
     })
 
     // Anthony - Brian
 
-// What we have so far: 
-// - We have the checkbox come up on creation of task with a task id 
-// - We are able to redirect the user when editing a task + setting new list 
-// - We keep the user on the same page + update the task name if new list is not selected
+    // What we have so far:
+    // - We have the checkbox come up on creation of task with a task id
+    // - We are able to redirect the user when editing a task + setting new list
+    // - We keep the user on the same page + update the task name if new list is not selected
 
 
-// What we need done:
-// - If the user selects the 'completed' checkbox, we should be able to make a fetch to the database to update the tasks 'completed' state.
+    // What we need done:
+    // - If the user selects the 'completed' checkbox, we should be able to make a fetch to the database to update the tasks 'completed' state.
 
-// - If the user reloads the page, the task should still be checked
+    // - If the user reloads the page, the task should still be checked
 
-// Pseudo code 
-// - Figure out how to tell whether or not a check box has been selected 
+    // Pseudo code
+    // - Figure out how to tell whether or not a check box has been selected
 
-// - Associate that selected checkbox with it's task id 
+    // - Associate that selected checkbox with it's task id
 
 
 
