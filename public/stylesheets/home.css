@@ -19,7 +19,7 @@
 #top-nav-search {
   position: relative;
   top: 3px;
-  left: 227px;
+  left: -20%;
   background-color: #ffe3a6;
   color: #646054;
   height: 80%;
@@ -150,7 +150,7 @@
 #new-task-input {
   position: relative;
   height: 27px;
-  width: 75%;
+  width: 85%;
   color: #646054;
   font-family: sans-serif;
   border-radius: 8px;
@@ -244,9 +244,10 @@
 #edit-task {
   margin-top: 30px;
   position: absolute;
+  top: 154px;
   margin-left: -1%;
-  height: 40%;
-  width: 35%;
+  height: 400px;
+  width: 500px;
   min-width: 300px;
   border-radius: 15px;
   background-color: #FCF9EE;
@@ -602,22 +603,6 @@
   cursor: pointer;
 }
 
-#sort-btn {
-  position: relative;
-  background-color: #FFD129;
-  left: 16px;
-  color: #646054;
-  width: 28px;
-  height: 28px;
-  font-family: sans-serif;
-  font-weight: bold;
-  border-radius: 3px;
-  border: 0px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 #logo-divider {
   position: relative;
   top: 10px;
@@ -672,4 +657,13 @@
   border-radius: 5px;
   padding: 10px;
   margin-left: 11px;
+}
+
+#home-icon {
+  background-color: transparent;
+  font-size: 30px;
+  position: relative;
+  left: 4px;
+  cursor: pointer;
+  text-decoration: none;
 }
