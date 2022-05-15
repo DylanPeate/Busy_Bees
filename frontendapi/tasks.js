@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
-
-
 const { asyncHandler } = require('../utils')
 const db = require('../db/models');
 const { task } = db;
@@ -75,27 +72,25 @@ router.post('/new-list', requireAuth, asyncHandler(async (req, res) => {
 
 //delete list
 
-router.delete('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
-  const pageId = parseInt(req.params.id, 10);
-  const user_id = req.session.auth.userId;
-  const tasks = await db.task.findAll({
-    where: { user_id }
-  })
-  const deletedList = await db.list.findOne({
-    where: {
-      id: pageId
-    }
-  })
-  await db.task.destroy({
-    where: {
-      list_id: pageId,
-      user_id
-    }
-  })
-  await deletedList.destroy();
+// router.get('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
+//   const pageId = parseInt(req.params.id, 10);
+//   const user_id = req.session.auth.userId;
+//   const deletedList = await db.list.findOne({
+//     where: {
+//       id: pageId,
+//       user_id
+//     }
+//   })
+//   await db.task.destroy({
+//     where: {
+//       list_id: pageId,
+//       user_id
+//     }
+//   })
+//   await deletedList.destroy();
 
-  res.redirect('/home')
-}))
+//   res.redirect('/home')
+// }))
 
 //delete task
 router.delete('/tasks/delete-task', requireAuth, asyncHandler(async (req, res) => {

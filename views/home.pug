@@ -37,12 +37,12 @@ html
                             div(class="list-divider")
                             div(id="list-with-button")
                                 a(type="button" id=`list-#{list.id}` class="new-list" href=`/home/list/${list.id}`)= list.name
-                                button(id="delete-list-btn" class="btn delete-btn") -
-                            div(id="confirm-delete" class="hidden")
-                                p(class="confirm-list text") Delete List?
-                                div(id="confirm-yes-no-buttons")
-                                    a(type="button" id=`delete-list-#{list.id}` class= "yes-button btn" href=`/home/list/${list.id}/delete`) ✔
-                                    button(id="no-confirm-btn" class="btn") ❌
+                                a(id="delete-list-btn" class="btn delete-btn" href=`/home/list/${list.id}/delete`) -
+                            //- div(id="confirm-delete" class="hidden")
+                            //-     p(class="confirm-list text") Delete List?
+                            //-     div(id="confirm-yes-no-buttons")
+                            //-         a(type="button" id=`delete-list-#{list.id}` class= "yes-button btn" href=`/home/list/${list.id}/delete`) ✔
+                            //-         button(id="no-confirm-btn" class="btn") ❌
                 div(class="divider")
             div(id="task-lists-body")
                 div(id="tasks-body-header")

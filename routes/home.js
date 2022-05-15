@@ -56,9 +56,6 @@ router.get('/list/:id', csrfProtection, requireAuth, (async (req, res) => {
 router.get('/list/:id/delete', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
     const pageId = parseInt(req.params.id, 10);
     const user_id = req.session.auth.userId;
-    const tasks = await db.task.findAll({
-        where: { user_id }
-    })
     const deletedList = await db.list.findOne({
         where: {
             id: pageId

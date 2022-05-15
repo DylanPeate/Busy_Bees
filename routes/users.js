@@ -65,7 +65,7 @@ router.post('/login', csrfProtection, loginValidators,
 
 router.get('/logout', (req, res) => {
   logoutUser(req, res)
-  res.redirect('/users/login')
+  res.redirect('/')
 })
 
 
