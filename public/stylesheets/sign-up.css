@@ -6,8 +6,9 @@
   background-color: transparent;
   font-size: 50px;
   position: relative;
-  right: 330px;
+  left: 10px;
   cursor: pointer;
+  width: fit-content;
   text-decoration: none;
   display: flex;
   flex-direction: column;
