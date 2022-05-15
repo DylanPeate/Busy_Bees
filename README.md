@@ -54,3 +54,14 @@ This project is based off of [Remember the Milk](https://www.rememberthemilk.com
 * Add priority levels to tasks/lists
 * Sort by name, date created, priority
 * Login by Username option
+
+***
+
+### Splash/Welcome Page
+![Home](public/homepage.PNG)
+### Home Page (Logged In)
+![LoggedIn](public/loggedin.PNG)
+### Create a list
+![addList](public/addList.PNG)
+### Edit a task
+![editTask](public/EditTask.PNG)
