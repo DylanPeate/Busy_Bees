@@ -135,16 +135,16 @@ router.post('/sign-up', csrfProtection, signUpValidator, async (req, res) => {
 })
 
 //demo user
-router.get('/demo', asyncHandler(async (req, res) => {
+// router.get('/demo', asyncHandler(async (req, res) => {
 
-  const demoUser = await db.user.findOne({
-    where: { email: "demo@email.com" }
-  })
-  console.log(demoUser, "<----")
-  loginUser(req, res, demoUser)
-  return res.redirect('/home')
+//   const demoUser = await db.user.findOne({
+//     where: { email: "demo@email.com" }
+//   })
+//   console.log(demoUser, "<----")
+//   loginUser(req, res, demoUser)
+//   return res.redirect('/home')
 
-}))
+// }))
 
 
 
