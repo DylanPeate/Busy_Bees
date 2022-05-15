@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const body = { name };
         try {
             // FETCH -> post request
-            const res = await fetch('http://localhost:8080/api/tasks',
+            const res = await fetch('/api/tasks',
                 {
                     method: "POST",
                     body: JSON.stringify(body),
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             editTaskDiv.setAttribute('id', 'edit-task');
 
             // FETCH - get request
-            const fetchInfo = await fetch('http://localhost:8080/api/tasks/taskid')
+            const fetchInfo = await fetch('/api/tasks/taskid')
 
             // get data from fetch request
             const data = await fetchInfo.json();
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 try {
                     // FETCH -> put request
-                    const editTask = await fetch('http://localhost:8080/api/tasks/edit-task',
+                    const editTask = await fetch('/api/tasks/edit-task',
                         {
                             method: "PUT",
                             body: JSON.stringify(body),
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const resListId = editTask.list_id;
                     const resName = editTask.name;
                     if (resListId) {
-                        window.location.href = `http://localhost:8080/home/list/${resListId}`
+                        window.location.href = `/home/list/${resListId}`
                     } else {
                         taskEle.innerText = resName
                     };
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     id
                 };
                 try {
-                    const deleteTask = await fetch('http://localhost:8080/api/tasks/delete-task',
+                    const deleteTask = await fetch('/api/tasks/delete-task',
                         {
                             method: "DELETE",
                             body: JSON.stringify(body),
@@ -363,7 +363,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 taskId,
                 completed: completedStatus,
             }
-            const res = await fetch('http://localhost:8080/api/tasks/completed', {
+
+            const res = await fetch('/api/tasks/completed', {
                 method: "PUT",
                 body: JSON.stringify(body),
                 headers: {
