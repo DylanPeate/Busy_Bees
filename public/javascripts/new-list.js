@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         e.stopPropagation()
         const input = document.getElementById('listName')
         const form = document.getElementById("list-form-container")
-        console.log(input.value, "<-------")
+        // console.log(input.value, "<-------")
         const name = input.value
         const body = { name }
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             form.classList.add("hidden")
         } else {
             try {
-                const res = await fetch('http://localhost:8080/api/new-list', {
+                const res = await fetch('/api/new-list', {
                     method: "POST",
                     body: JSON.stringify(body),
                     headers: {

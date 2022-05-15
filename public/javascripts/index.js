@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // obtain the elements needed to interact
     // Anthony - Brian
     const taskInfo = async () => {
-        const res = await fetch('http://localhost:8080/api/tasks')
+        const res = await fetch('/api/tasks')
         const data = await res.json();
         return data
     }
