@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // obtain the elements needed to interact
     // Anthony - Brian
-    const taskInfo = async() => {
+    const taskInfo = async () => {
         const res = await fetch('http://localhost:8080/api/tasks')
         const data = await res.json();
         return data
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     const listSummary = document.getElementById('list-summary');
-
 
     const createForm = (csrfToken, lists, editNameVal, taskId) => {
         const editTaskForm = document.createElement('form');
@@ -109,48 +108,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     const taskData = await taskInfo();
     const taskDataArr = taskData.theTask;
     const checkBoxes = document.querySelectorAll('.c-checkbox')
-    
-    // Initialize array that will compare page task id with database id 
-        let cbIdArr = [];
-        checkBoxes.forEach(box => {
-            cbIdArr.push(Number(box.getAttribute('id').split("c-").join("")))
-        })
 
-        // Function to find all tasks on page
-        const allTasksOnPage = () => {
-            const onPage = [];
-            taskDataArr.forEach(task => {
-                if (cbIdArr.includes(task.id)) {
-                    onPage.push(task);
-                }
-            })
-            
-            return onPage
-        }
+    // Initialize array that will compare page task id with database id
+    let cbIdArr = [];
+    checkBoxes.forEach(box => {
+        cbIdArr.push(Number(box.getAttribute('id').split("c-").join("")))
+    })
 
-        const onPageCompleted = allTasksOnPage()
-        
-
-        // Mark all current tasks on page as completed/not
-        onPageCompleted.forEach(task => {
-            if (task.completed) {
-                const completedEle = document.getElementById(`c-${task.id}`)
-                completedEle.checked = true
+    // Function to find all tasks on page
+    const allTasksOnPage = () => {
+        const onPage = [];
+        taskDataArr.forEach(task => {
+            if (cbIdArr.includes(task.id)) {
+                onPage.push(task);
             }
         })
 
-        // Count all completed tasks on page
-        
-        const completedCount = () => {
-            let count = 0;
-            onPageCompleted.forEach(task => {
-                if (task.completed) {
-                    count++
-                }
-            })
-            return count;
+        return onPage
+    }
+
+    const onPageCompleted = allTasksOnPage()
+
+
+    // Mark all current tasks on page as completed/not
+    onPageCompleted.forEach(task => {
+        if (task.completed) {
+            const completedEle = document.getElementById(`c-${task.id}`)
+            completedEle.checked = true
         }
-        
+    })
+
+    // Count all completed tasks on page
+
+    const completedCount = () => {
+        let count = 0;
+        onPageCompleted.forEach(task => {
+            if (task.completed) {
+                count++
+            }
+        })
+        return count;
+    }
+
     let completedCounter = completedCount();
     const completedEle = document.getElementById('completed-count');
     completedEle.innerText = completedCounter;
@@ -183,7 +182,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             taskName.value = ''
 
             // IN PROGRESS CHECKBOX FUNCTIONALITY
-            
+
             if (taskElement.nextSibling === null) {
                 const checkboxForm = document.createElement('form');
                 checkboxForm.setAttribute('id', 'completed-checkbox')
@@ -290,7 +289,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-            // Delete a task by calling custom api 
+            // Delete a task by calling custom api
             deleteTaskButton.addEventListener('click', async (e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -298,7 +297,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // get data from fetch request
                 const formData = document.getElementById('edit-task-form')
 
-                
+
                 const id = formData.getAttribute('data-taskId')
                 const taskEle = document.getElementById(id)
                 const checkEle = document.getElementById(`c-${id}`)
@@ -316,6 +315,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         }).then(res => res.json())
                     taskEle.remove()
                     checkEle.remove()
+                    editTaskDiv.remove();
+
 
                 } catch (error) {
                     console.log(error, "<-- ERROR");
@@ -332,7 +333,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const taskId = Number(unparsedTask.split("c-").join(""));
             const taskData = await taskInfo()
             const taskDataArr = taskData.theTask;
-            
+
 
             let completedStatus;
             taskDataArr.forEach(task => {
@@ -341,22 +342,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             })
 
-            
+
             if (completedStatus === true) {
                 completedCounter -= 1;
 
                 completedStatus = false
 
-                
+
 
             } else if (completedStatus === false) {
                 completedCounter += 1;
 
                 completedStatus = true;
 
-                
+
             }
-            
+
             completedEle.innerText = completedCounter;
 
             const body = {
@@ -371,15 +372,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     "Content-Type": "application/json"
                 }
             }).then(res => res.json());
-            
-            
+
+
         }
     }) // <-- on click of task functionality
     // (sidebar, delete, edit, completed task checkbox, and more)
 
 
 
-}) 
+})
 
 
 
@@ -400,7 +401,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     // - Figure out how to tell whether or not a check box has been selected
 
     // - Associate that selected checkbox with it's task id
-
-
-
-
