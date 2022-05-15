@@ -279,6 +279,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         window.location.href = `/home/list/${resListId}`
                     } else {
                         taskEle.innerText = resName
+                        editTaskDiv.remove();
                     };
 
 
