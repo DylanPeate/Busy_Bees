@@ -57,6 +57,7 @@ This project is based off of [Remember the Milk](https://www.rememberthemilk.com
 
 ***
 
+
 ### Splash/Welcome Page
 ![Home](public/homepage.PNG)
 ### Home Page (Logged In)
