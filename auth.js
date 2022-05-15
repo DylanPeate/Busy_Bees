@@ -1,5 +1,6 @@
 const db = require('./db/models');
 const loginUser = (req, res, user) => {
+    // logoutUser(req, res);
     req.session.auth = {
         userId: user.id,
     };

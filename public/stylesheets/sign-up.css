@@ -2,6 +2,56 @@
   background-color: #fcf9ee;
 }
 
+#home-icon {
+  background-color: transparent;
+  font-size: 50px;
+  position: relative;
+  left: 10px;
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+.busy-bees {
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  color: #FCF9EE;
+  top: -15px;
+  font-family: monospace;
+}
+
+.alert {
+  position: relative;
+  top: 569px;
+  right: -10px;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.text {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #4a401c;
+  text-decoration: none;
+}
+
+.error {
+  position: relative;
+  top: 4px;
+  right: -31px;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  background-color: #ff9369;
+  width: fit-content;
+}
+
 #left-panel {
   content: "";
   position: fixed;
@@ -23,11 +73,16 @@
   max-height: 100%;
   float: right;
   position: relative;
+  left: 20px;
+  top: 158px;
 }
 
 #login-div {
   display: grid;
   justify-items: end;
+  position: relative;
+  bottom: 60px;
+  background: transparent;
 }
 
 .right-text {
@@ -44,12 +99,6 @@
   right: 75px;
 }
 
-.alert {
-  position: absolute;
-  top: 90px;
-  right: -175px;
-}
-
 #form-text {
   position: relative;
   top: -13px;
@@ -61,7 +110,6 @@
   max-width: 400px;
   height: 400px;
   margin-left: 100px;
-  margin-top: 20%;
   display: grid;
   justify-content: space-around;
 }

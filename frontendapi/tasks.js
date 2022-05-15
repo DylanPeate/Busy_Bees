@@ -10,15 +10,15 @@ const { requireAuth } = require('../auth');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 
-router.get('/tasks', async(req, res) => {
- const user_id = req.session.auth.userId;
+router.get('/tasks', requireAuth, async (req, res) => {
+  const user_id = req.session.auth.userId;
   const theTask = await task.findAll({
     where: {
       user_id
     }
   });
-    
-  return res.json({theTask})
+
+  return res.json({ theTask })
 })
 
 // Anthony - Brian
@@ -157,7 +157,7 @@ router.put('/tasks/completed', async (req, res) => {
 
   await task.save();
 
-  res.json({completed: task.completed})
+  res.json({ completed: task.completed })
 })
 
 
