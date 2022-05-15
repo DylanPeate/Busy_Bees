@@ -4,8 +4,9 @@ window.addEventListener('DOMContentLoaded', async() => {
   if (!document.referrer) {
     const newspaperSpinning = [
       { transform: 'scale(1.0)' },
+      { transform: 'scale(1.02)'},
       { transform: 'scale(1.01)'},
-      { transform: 'scale(1.0)'}
+      { transform: 'scale(1.0)' }
     ]
 
     const newspaperTiming = {
